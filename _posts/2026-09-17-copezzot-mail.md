@@ -11,6 +11,9 @@ image:
 
 **Copezzot Mail AI Assistant** è un client email per Windows che sta tutto in **un unico script PowerShell** con interfaccia **WinForms**. Non parla direttamente con i server di posta: si appoggia a **Outlook desktop** tramite automazione COM e usa **Claude** (API Anthropic) per scrivere nuove email e rispondere a quelle ricevute.
 
+> **Progetto su GitHub:** [github.com/korb3n70/Mail-AI-Assistant](https://github.com/korb3n70/Mail-AI-Assistant)
+{: .prompt-info }
+
 L'idea è semplice: scrivi due righe di istruzioni ("rispondi che accetto, ma sposta la riunione a giovedì"), scegli lingua e tono, e Claude prepara il testo. Tu lo ritocchi e lo invii. Col tempo l'app impara anche **come scrivi tu**.
 
 ## Cosa fa
