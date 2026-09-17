@@ -6,7 +6,7 @@ tags: [powershell, outlook, claude, ai, winforms, email, anthropic]
 description: Un client email leggero per Windows, scritto in un solo script PowerShell, che usa Outlook e Claude per scrivere e rispondere alle email.
 image:
   path: /assets/img/posts/copezzot-mail.jpeg
-  alt: Logo di Copezzot Mail AI Assistant
+  alt: Copezzot Mail AI Assistant
 ---
 
 **Copezzot Mail AI Assistant** è un client email per Windows che sta tutto in **un unico script PowerShell** con interfaccia **WinForms**. Non parla direttamente con i server di posta: si appoggia a **Outlook desktop** tramite automazione COM e usa **Claude** (API Anthropic) per scrivere nuove email e rispondere a quelle ricevute.
