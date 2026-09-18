@@ -23,9 +23,13 @@
 /* Statistiche nelle schede degli elenchi (home): solo lettura */
 .statsrv-lista {
   white-space: nowrap;
+  /* La scheda e' tutta un <a>: senza questo i numeri ereditano
+     il colore dei link invece di quello di data e categorie. */
+  color: var(--text-muted-color);
 
   .statsrv-react {
     gap: 0.1rem;
+    vertical-align: baseline;
   }
 }
 
