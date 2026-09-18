@@ -48,7 +48,9 @@
   }
 }
 
-.statsrv-react-segno {
+/* La specificita' doppia serve: lo script inietta un <style> a runtime, che
+   altrimenti vincerebbe sul foglio di stile del tema. */
+.statsrv-react-btn .statsrv-react-segno {
   font-size: 0; /* nasconde il triangolino disegnato dallo script */
 
   &::before {
