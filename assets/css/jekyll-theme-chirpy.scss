@@ -75,10 +75,9 @@
   }
 }
 
-/* Lo script inietta a runtime ".statsrv-react .statsrv-react-btn > span
-   { font-size: inherit }": per nascondere il triangolino serve una regola
-   almeno altrettanto specifica, da qui la catena completa. */
-.statsrv-react .statsrv-react-btn > .statsrv-react-segno {
+/* Dalla versione 20260918-2300 lo script tiene il proprio stile in
+   @layer statsrv, quindi basta la classe: il CSS del sito vince comunque. */
+.statsrv-react-segno {
   font-size: 0; /* nasconde il triangolino disegnato dallo script */
 
   &::before {
