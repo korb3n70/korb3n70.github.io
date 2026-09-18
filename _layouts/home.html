@@ -116,14 +116,14 @@ layout: default
                     {% endfor %}
                   </span>
                 {% endif %}
-
-                <!-- statistiche (statsrv): sola lettura, il voto sta nel post -->
-                <span class="statsrv-lista">
-                  <i class="far fa-eye fa-fw me-1" aria-hidden="true"></i>
-                  <span data-statsrv-views="{{ post.url }}">&ndash;</span>
-                  {% include statsrv-reazioni-lista.html url=post.url %}
-                </span>
               </div>
+
+              <!-- statistiche (statsrv): sola lettura, il voto sta nel post -->
+              <span class="statsrv-lista ms-2">
+                <i class="far fa-eye fa-fw me-1" aria-hidden="true"></i>
+                <span data-statsrv-views="{{ post.url }}">&ndash;</span>
+                {% include statsrv-reazioni-lista.html url=post.url %}
+              </span>
 
               {% if post.pin %}
                 <div class="pin ms-1">
