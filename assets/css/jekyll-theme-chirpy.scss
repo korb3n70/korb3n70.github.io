@@ -23,16 +23,22 @@
 /* Statistiche nelle schede degli elenchi (home): solo lettura */
 .statsrv-lista {
   white-space: nowrap;
+
+  .statsrv-react {
+    gap: 0.1rem;
+  }
 }
 
 .statsrv-reazioni-lista {
-  margin-left: 0.2rem;
+  margin-left: 0.4rem;
 }
 
 .statsrv-react-btn.is-readonly {
-  border-color: transparent;
+  border: 0;
   background: none;
-  padding: 0 0.25rem;
+  padding: 0;
+  margin-right: 0.5rem;
+  gap: 0.25rem;
   cursor: inherit;
 }
 
@@ -78,11 +84,13 @@
   }
 }
 
-.statsrv-react-btn[aria-label='Mi piace'] .statsrv-react-segno::before {
+/* In sola lettura l'etichetta include il conteggio ("Mi piace: 3"),
+   quindi il confronto e' sull'inizio della stringa, non esatto. */
+.statsrv-react-btn[aria-label^='Mi piace'] .statsrv-react-segno::before {
   content: '\f164'; /* thumbs-up */
 }
 
-.statsrv-react-btn[aria-label='Non mi piace'] .statsrv-react-segno::before {
+.statsrv-react-btn[aria-label^='Non mi piace'] .statsrv-react-segno::before {
   content: '\f165'; /* thumbs-down */
 }
 
