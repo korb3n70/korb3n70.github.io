@@ -20,6 +20,22 @@
   font-size: 0.85rem;
 }
 
+/* Statistiche nelle schede degli elenchi (home): solo lettura */
+.statsrv-lista {
+  white-space: nowrap;
+}
+
+.statsrv-reazioni-lista {
+  margin-left: 0.2rem;
+}
+
+.statsrv-react-btn.is-readonly {
+  border-color: transparent;
+  background: none;
+  padding: 0 0.25rem;
+  cursor: inherit;
+}
+
 /* Reazioni (statsrv): stile allineato ai pulsanti del tema,
    con pollice su/giu' di Font Awesome al posto dei triangolini. */
 .statsrv-reazioni {
