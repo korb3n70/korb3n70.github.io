@@ -19,3 +19,54 @@
   color: var(--text-muted-color);
   font-size: 0.85rem;
 }
+
+/* Reazioni (statsrv): stile allineato ai pulsanti del tema,
+   con pollice su/giu' di Font Awesome al posto dei triangolini. */
+.statsrv-reazioni {
+  margin: 2rem 0 1rem;
+}
+
+.statsrv-react-btn {
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--btn-border-color);
+  border-radius: 1rem;
+  background: var(--card-bg);
+  color: var(--text-muted-color);
+  font-size: 0.85rem;
+  line-height: 1.2;
+  opacity: 1;
+  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+
+  &:hover:not([disabled]) {
+    color: var(--link-color);
+    border-color: var(--link-color);
+  }
+
+  &.is-mine {
+    color: var(--link-color);
+    border-color: var(--link-color);
+  }
+}
+
+.statsrv-react-segno {
+  font-size: 0; /* nasconde il triangolino disegnato dallo script */
+
+  &::before {
+    font-family: 'Font Awesome 7 Free', 'Font Awesome 6 Free';
+    font-weight: 400;
+    font-size: 0.95rem;
+    line-height: 1;
+  }
+}
+
+.statsrv-react-btn[aria-label='Mi piace'] .statsrv-react-segno::before {
+  content: '\f164'; /* thumbs-up */
+}
+
+.statsrv-react-btn[aria-label='Non mi piace'] .statsrv-react-segno::before {
+  content: '\f165'; /* thumbs-down */
+}
+
+.statsrv-react-btn.is-mine .statsrv-react-segno::before {
+  font-weight: 900; /* icona piena sul voto dato */
+}
