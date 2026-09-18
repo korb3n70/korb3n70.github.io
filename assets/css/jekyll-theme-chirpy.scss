@@ -75,9 +75,10 @@
   }
 }
 
-/* La specificita' doppia serve: lo script inietta un <style> a runtime, che
-   altrimenti vincerebbe sul foglio di stile del tema. */
-.statsrv-react-btn .statsrv-react-segno {
+/* Lo script inietta a runtime ".statsrv-react .statsrv-react-btn > span
+   { font-size: inherit }": per nascondere il triangolino serve una regola
+   almeno altrettanto specifica, da qui la catena completa. */
+.statsrv-react .statsrv-react-btn > .statsrv-react-segno {
   font-size: 0; /* nasconde il triangolino disegnato dallo script */
 
   &::before {
