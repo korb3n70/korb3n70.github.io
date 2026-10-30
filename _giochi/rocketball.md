@@ -12,8 +12,8 @@ requisiti: >-
   Amiga veloce (PiStorm, schede acceleratrici, emulatori con JIT).
 
 # >>> da qui in giu' scrive sync-giochi.py: non modificare a mano
-versione: "1.1.4"
-data_versione: 2026-10-26
+versione: "2.0"
+data_versione: 2026-10-30
 cartella: rocketball
 repo: "korb3n70/rollerball-amiga"
 schermate:
@@ -24,15 +24,143 @@ schermate:
   - file: /assets/img/giochi/rocketball/rocketball_amiga_5_options.png
 download:
   - nome: "Dischetti ADF (floppy o emulatore)"
-    file: "Rocketball_Amiga_ADF_v1.1.4_2026-10-26.zip"
-    dimensione: "542 KB"
+    file: "Rocketball_Amiga_ADF_v2.0_2026-10-30.zip"
+    dimensione: "306 KB"
   - nome: "WHDLoad · remake"
-    file: "Rocketball_Remake_v1.1.4.lha"
-    dimensione: "544 KB"
+    file: "Rocketball_Remake_v2.0.lha"
+    dimensione: "1,3 MB"
   - nome: "WHDLoad · versione fedele"
-    file: "Rocketball_v1.1.4.lha"
-    dimensione: "254 KB"
+    file: "Rocketball_v2.0.lha"
+    dimensione: "723 KB"
 changelog:
+  - versione: "2.0"
+    data: 2026-10-30
+    note: |
+      Rocketball for Amiga - version 2.0 (30.10.2026): what changed, both editions
+
+      ==========================================================================================
+      ROCKETBALL - THE ORIGINAL EDITION
+      ==========================================================================================
+
+      Rocketball - Amiga conversion (Massimo Bonomo 2026): what changed
+
+      Version 2.0 (30.10.2026) - a clean break: a new engine
+        Every edition of Rocketball 2.0 is rebuilt with reforge: the C64 game rewritten as C, routine
+        by routine, and checked against a C64 emulator at every frame and every CPU cycle; a new
+        Amiga layer for the screen, the sound, the keys and the joysticks. Nothing of the 1.x
+        recompiled 6502 code is left (1.x stays on GitHub: the branch 1.x, the tag v1.1.4).
+        What changes for the player:
+        - Two executables for the original edition: rb for a 68020 or better (A1200, accelerators,
+          PiStorm) and, new, rb_a500 for a stock A500 (68000, 1 MB). On an A500 the game now keeps
+          the C64's speed (1.x ran at about 2/3): the screen shows fewer pictures a second, the game
+          and the sound do not slow down. Floppy: a menu, 1 the A500 version, 2 the 68020 one.
+        - The sound effects of the ball and of its bounces are audible (1.x lost them), the music
+          from the C64's SID rebuilt for Paula.
+        - The version on the title screen (V2.0), as before.
+        - The joystick: one player in port 2 or the cursor keys + SPACE / CTRL, two players port 1
+          and port 2, as in 1.x. The keys as in 1.x: BACKSPACE or R is RUN/STOP (back to the title),
+          P or HELP pause, ESC or F10 quit, F1 / F3 / F5 / F7 on the title as on the C64.
+        - WHDLoad: Rocketball.slave (rb, 68020: WHDLoad says so on a 68000) and RocketballA500.slave
+          (rb_a500). The Rocketball DOS icon starts rb without WHDLoad, and rb_a500 on a 68000.
+        What to update: everything (the WHDLoad drawer, the .lha pack, the floppy).
+
+      Version 1.1.4 (26.10.2026)
+        The music stuttered on a PiStorm under Caffeine OS: the audio interrupt also came without
+        Paula asking for it, and each such call skipped a block of music. Now only Paula's real
+        requests are served.
+
+      Version 1.1.3 (26.10.2026)
+        The WHDLoad packs (.lha) also have an icon that starts the game without WHDLoad: Rocketball
+        DOS (and RocketballRemake DOS): on a PiStorm WHDLoad slowed the remake down in the parade.
+
+      Version 1.1.2 (25.10.2026)
+        WHDLoad: the game stayed on a black screen after WHDLoad's splash (since 1.1): the slaves
+        had a version string ($VER:) that WHDLoad reads; it is gone (the version is on the splash).
+
+      Version 1.1.1 (25.10.2026)
+        One set of texts for both editions (README, LEGGIMI, CHANGES, NOVITA: the original and the
+        remake together), the same in every package, so that both can live in one drawer. The
+        floppy's installer copies them into both drawers. The game is unchanged.
+
+      Version 1.1 (24.10.2026)
+        The game no longer stops after about 36 minutes switched on: the emulated C64's clock ran out
+        of 32 bits. Now every time is moved back together, the sound's too (its envelopes and
+        voice 3's noise, the game's source of chance).
+        The WHDLoad drawer's Rocketball icon now starts the game straight from AmigaDOS, also when
+        WHDLoad is there: Caffeine OS runs WHDLoad games in its slow "Turtle JIT" mode on the
+        PiStorm. For WHDLoad: Rocketball.slave from the Shell, or the .lha pack.
+        The game's title: Rocketball, as on the C64 (Roller Ball was its Italian newsstand title).
+        One floppy for both editions, the remake too: a menu at start-up (1 Rocketball, 2 the
+        Remake); from the Workbench, its Install icon puts both on the hard disk.
+        CHANGES.txt and NOVITA.txt in every package.
+        What to update: everything (the floppy, the WHDLoad drawer, the .lha pack).
+
+      Version 1.0.2 (21.10.2026)
+        One player plays with the joystick in port 2 (the C64 game used port 1, the mouse's port on
+        the Amiga); R also goes back to the title.
+
+      Version 1.0.1 (20.10.2026)
+        The credits to the original, Rocketball by IJK Software.
+
+      Version 1.0 (20.10.2026)
+        First release.
+
+      ==========================================================================================
+      ROCKETBALL REMAKE
+      ==========================================================================================
+
+      Rocketball Remake - Amiga remake (Massimo Bonomo 2026): what changed
+
+      Remake 2.0 (30.10.2026) - a clean break: a new engine
+        The remake rebuilt with reforge, like the original edition (see its 2.0): the C64 game in C,
+        checked against a C64 emulator at every frame, with the remake's rules, screens, announcer
+        and bikes ported on top of it. The same game to play, the same options file (rb_remake.cfg:
+        the options you saved with 1.x are read).
+        What changes for the player:
+        - Every option works, FALL RULES too: in 1.x it never changed anything (the release always
+          played its first value); now C64, REMAKE and CHARGE really change who falls.
+        - The sound effects of the ball and of its bounces are audible. The announcer and the bike's
+          engine on both sides of the stereo, as in 1.x.
+        - The teams' colours as in 1.x (Napoli light blue, Moscow red), black between the screens.
+        - The keys as in 1.x: P or HELP pause, BACKSPACE or R back to the title.
+        - The options are written as soon as you leave F7 after a change, with WHDLoad too.
+        - Requirements: 1 MB chip and about 1.2 MB of other memory; a stock A1200 (2 MB chip, no fast
+          memory) cannot start it. With a 68020 and fast memory the game keeps its speed but shows
+          about 12 pictures a second; a fast 68030, a 68040 / 68060 or a PiStorm shows them all.
+        - The floppy no longer has the remake (1.3 MB: it does not fit): its .lha pack, hard disk only.
+
+      Remake 1.1.4 (26.10.2026)
+        The music stuttered on a PiStorm under Caffeine OS: the audio interrupt also came without
+        Paula asking for it, and each such call skipped a block of music. Now only Paula's real
+        requests are served.
+
+      Remake 1.1.3 (26.10.2026)
+        The icon RocketballRemake DOS: the remake without WHDLoad (on a PiStorm WHDLoad slowed it
+        down in the parade, the music too).
+
+      Remake 1.1.2 (25.10.2026)
+        WHDLoad: no more black screen after the splash (see the original edition's 1.1.2).
+
+      Remake 1.1.1 (25.10.2026)
+        The texts shared with the original edition (see its 1.1.1). The game is unchanged.
+
+      Remake 1.1 (24.10.2026)
+        First release of the remake (numbered 1.1 like the original edition it is built on), for
+        fast Amigas with 1 MB chip memory (PiStorm, 68040 / 68060, emulators with JIT). On top of
+        the original game, recompiled from the C64:
+        - the arena, the players and the panel redrawn; an announcer; the bikes of the film
+          Rollerball at the kick-off (they tow the favoured team, the ball comes down into their
+          hands) and as a power-up in play (the power bar full: hold fire; one bike at a time,
+          10 seconds, it knocks the opponents down, jumping ones too);
+        - new rules, each one switchable back to the C64's (F7 on the title): ball catches on
+          contact, passes and shots, dash and stamina, wide goals, wall rebounds, the charge (whoever
+          charges knocks the opponent down and stays up), smarter computer teams, 11 sprites (no
+          player jumping to the screen's edge), the shot knocking down an opponent in its way, the
+          automatic pass (fire + down with the ball);
+        - both teams can be played by the computer (F5 / F6: levels 1-6), with a demo on the title;
+        - the options kept on disk (rb_remake.cfg); the title's keys by the joystick too.
+        Known: with both teams played by the computer at levels 1 and 3, team 1 loses a little more
+        often than team 2 (it does not happen with a human in team 1).
   - versione: "1.1.4"
     data: 2026-10-26
     note: |
