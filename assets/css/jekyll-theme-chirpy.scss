@@ -108,20 +108,16 @@
 
 /* Elenco dei titoli (tab Giochi) */
 .giochi-elenco {
+  /* Riquadri piccoli: nell'elenco serve riconoscere il gioco e arrivare alla
+     scheda, non leggerne la descrizione. Quella sta nella pagina. */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 0.8rem;
   margin-top: 1.5rem;
 }
 
 .giochi-scheda {
   overflow: hidden;
-
-  a {
-    display: block;
-    color: inherit;
-    text-decoration: none;
-  }
 
   img {
     width: 100%;
@@ -133,24 +129,43 @@
   }
 
   h2 {
-    margin: 0 0 0.2rem;
-    font-size: 1.1rem;
+    margin: 0 0 0.15rem;
+    font-size: 0.95rem;
+    line-height: 1.3;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 
 .giochi-scheda-testo {
-  padding: 0.9rem 1rem 1rem;
+  padding: 0.6rem 0.7rem 0.7rem;
 }
 
 .giochi-scheda-meta {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.35rem;
   color: var(--text-muted-color);
-  font-size: 0.85rem;
+  font-size: 0.78rem;
 }
 
-.giochi-scheda-sommario {
+.giochi-scheda-vai {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+
+  a {
+    color: var(--link-color);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 /* Scheda del singolo gioco */

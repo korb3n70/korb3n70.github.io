@@ -11,20 +11,28 @@ Si scaricano gratis: niente registrazione, niente negozio di mezzo.
   {% assign elenco = site.giochi | sort: 'order' %}
   {% for g in elenco %}
     <article class="giochi-scheda card">
-      <a href="{{ g.url | relative_url }}">
-        {% assign copertina = g.copertina | default: g.schermate[0].file %}
-        {% if copertina %}
-          <img src="{{ copertina | relative_url }}" alt="{{ g.title }}" loading="lazy">
-        {% endif %}
-        <div class="giochi-scheda-testo">
-          <h2>{{ g.title }}</h2>
-          <p class="giochi-scheda-meta">
-            {{ g.piattaforma }}
-            {% if g.versione %}<span class="gioco-sep">·</span> v{{ g.versione }}{% endif %}
-          </p>
-          <p class="giochi-scheda-sommario">{{ g.sommario }}</p>
-        </div>
-      </a>
+      {% assign copertina = g.copertina | default: g.schermate[0].file %}
+      {% if copertina %}
+        <img src="{{ copertina | relative_url }}" alt="{{ g.title }}" loading="lazy">
+      {% endif %}
+      <div class="giochi-scheda-testo">
+        {%- comment -%}
+          Il link avvolge SOLO testo. Avvolgendo anche l'immagine, Chirpy ci
+          infila dentro il proprio <a class="popup"> per l'ingranditore: due
+          <a> annidati, che il browser risolve chiudendo quello esterno, e il
+          collegamento alla scheda resta vuoto. Era il motivo per cui l'elenco
+          sembrava slegato dalle pagine dei giochi.
+        {%- endcomment -%}
+        <h2><a href="{{ g.url | relative_url }}">{{ g.title }}</a></h2>
+        <p class="giochi-scheda-meta">
+          {% if g.versione %}v{{ g.versione }}{% endif %}
+          {% if g.versione and g.data_versione %}<span class="gioco-sep">&middot;</span>{% endif %}
+          {% if g.data_versione %}{{ g.data_versione | date: "%d/%m/%Y" }}{% endif %}
+        </p>
+        <p class="giochi-scheda-vai">
+          <a href="{{ g.url | relative_url }}">Scheda e download &rarr;</a>
+        </p>
+      </div>
     </article>
   {% endfor %}
 
