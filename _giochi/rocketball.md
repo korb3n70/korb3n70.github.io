@@ -1,17 +1,20 @@
 ---
-title: Rocketball
-piattaforma: Amiga 500
-anno_originale: 1985
 order: 3
-sommario: >-
-  Lo sport violento su pattini del Commodore 64, ricompilato per Amiga.
-  Più un remake con grafica nuova, radiocronista, le moto e regole rivedute.
-requisiti: >-
-  Versione fedele: Amiga con 512 KB chip + 512 KB di altra memoria, 68020 o
-  superiore, Kickstart 1.3. Remake: 1 MB chip e circa 2 MB in tutto, e un
-  Amiga veloce (PiStorm, schede acceleratrici, emulatori con JIT).
 
 # >>> da qui in giu' scrive sync-giochi.py: non modificare a mano
+title: "Rocketball"
+piattaforma: "Amiga"
+originale: "Commodore 64, IJK Software, 1985"
+anno_originale: 1985
+sommario: >-
+  A violent future sport on skates: the 1985 Commodore 64 original, rebuilt for the Amiga
+  (now also for a stock A500), and a remake with new graphics, an announcer, the bikes and
+  new rules.
+requisiti: >-
+  Original edition: 1 MB (512 KB chip + 512 KB other), a 68000 (A500 version) or a 68020 or
+  better, Kickstart 1.3, OCS / ECS / AGA. Remake: 1 MB chip + about 1.2 MB other memory and a
+  fast Amiga (PiStorm, a fast 68030, 68040 / 68060, emulators with JIT).
+release_url: "https://github.com/korb3n70/rollerball-amiga/releases/tag/v2.0"
 versione: "2.0"
 data_versione: 2026-10-30
 cartella: rocketball
@@ -23,15 +26,18 @@ schermate:
   - file: /assets/img/giochi/rocketball/rocketball_amiga_4_bike_in_play.png
   - file: /assets/img/giochi/rocketball/rocketball_amiga_5_options.png
 download:
-  - nome: "Dischetti ADF (floppy o emulatore)"
+  - nome: "Original edition, floppy"
     file: "Rocketball_Amiga_ADF_v2.0_2026-10-30.zip"
     dimensione: "306 KB"
-  - nome: "WHDLoad · remake"
+    descrizione: "a bootable ADF (a menu: 1 the A500 version, 2 the 68020 one, and an installer) with the readme files"
+  - nome: "Remake, WHDLoad pack"
     file: "Rocketball_Remake_v2.0.lha"
     dimensione: "1,3 MB"
-  - nome: "WHDLoad · versione fedele"
+    descrizione: "new graphics, an announcer, the bikes and new rules, for fast Amigas; WHDLoad, or the DOS icon without WHDLoad"
+  - nome: "Original edition, WHDLoad pack"
     file: "Rocketball_v2.0.lha"
     dimensione: "723 KB"
+    descrizione: "the C64 game for a stock A500 (rb_a500, 68000) and for a 68020 or better (rb); WHDLoad, or the DOS icon without WHDLoad"
 changelog:
   - versione: "2.0"
     data: 2026-10-30
@@ -208,52 +214,123 @@ changelog:
 
       First release published as a GitHub Release; nothing renamed since (the earlier v1.0* tags had no packs).
 ---
-Due squadre da cinque pattinatori corrono su una pista inclinata. Una palla
-d'acciaio. Si segna infilandola nella porta ricavata nel muro, e si ferma
-l'avversario in qualunque modo: gomitate, cariche e, nel remake, le moto.
+Two teams of five skaters race around a banked track. One steel ball. Score by throwing it into the goal in the wall, and stop the other team by any means: elbows, charges, and in the remake, motorbikes.
 
-**Rocketball** uscì nel 1985 per Commodore 64, scritto da John Sinclair per la
-IJK Software con le musiche di L. Pilling. In Italia arrivò in edicola come
-*Roller Ball*. L'ispirazione è dichiarata: il film *Rollerball* del 1975.
+**Rocketball** was written for the Commodore 64 by IJK Software in 1985 (programmed by John Sinclair, music by L. Pilling). In Italy it reached the newsstands as **Roller Ball**. Its inspiration is plain to see: the 1975 film *Rollerball*.
 
-Qui trovi due edizioni nello stesso pacchetto: l'originale ricompilato e un
-remake che cambia pelle ma non motore.
+This project brings it to the Amiga in two editions, on one page:
+- **Rocketball 2.0**, the original edition: the C64 game as it was, now also for a stock A500.
+- **Rocketball Remake 2.0**: the same game underneath, with a new look, new rules and the bikes of the film.
 
-## L'edizione originale
+**New in 2.0: a new engine.** Every edition is rebuilt from scratch: the C64 game rewritten as C, routine by routine, and checked against a C64 emulator at every frame and every CPU cycle, with a new Amiga layer for the screen, the sound and the controls. What you get: an A500 version that keeps the C64's speed, the ball's sound effects (lost in 1.x), the announcer in stereo, and every remake option working.
 
-Il codice 6502 del C64 è stato **ricompilato staticamente** in codice 68000
-nativo. Non è emulazione: l'Amiga esegue il programma della IJK Software
-tradotto istruzione per istruzione, con le stesse regole, gli stessi tempi e
-gli stessi avversari. Durante lo sviluppo il risultato è stato confrontato
-fotogramma per fotogramma con un emulatore C64.
+## The Original Edition: The C64 Game, Rebuilt
 
-- La grafica originale, intatta.
-- L'audio ricostruito dalle tre voci del SID, registrate da un 6581 con reSID e
-  miscelate a 28 kHz.
-- Uno contro il computer (livelli 1-6) oppure due giocatori con due joystick.
+The original 6502 game is rewritten as C, routine by routine, and compiled into native 68000 code. It is translated, not emulated: the Amiga runs IJK Software's own game logic, with the same rules, the same timing and the same computer opponents.
 
-## Il remake
+The rewritten game is checked against a C64 emulator at every frame and every CPU cycle.
 
-Il remake tiene come motore lo stesso gioco ricompilato e cambia tutto quello
-che si vede e si tocca.
+- Two versions: `rb` for a 68020 or better (A1200, accelerators, PiStorm) and `rb_a500` for a stock A500 (68000, 1 MB). On an A500 the game keeps the C64's speed: the screen shows fewer pictures a second, the game and the sound do not slow down.
+- The original graphics.
+- The sound: the SID's music and effects rebuilt for Paula, the ball's bounces included.
+- One player against the computer (levels 1-6), or two players with two joysticks.
 
-**L'aspetto**: arena, pubblico, pattinatori e pannello ridisegnati a schermo
-pieno (256 righe), quattro squadre con i loro colori (Tokyo, Napoli, Madrid,
-Mosca), un radiocronista che commenta l'azione e un radar di tutta la pista.
+## The Remake: New Look, New Rules
 
-**Le moto**: dopo un gol due moto trainano in pista la squadra che l'ha subìto,
-e la palla scende al primo pattinatore trainato. In partita la barra di
-potenza si riempie in due minuti: quando è piena, tieni premuto il fuoco e
-arriva la tua moto, che per dieci secondi stende ogni avversario a tiro senza
-mai toccare i compagni. Anche le squadre del computer chiamano la loro, e in
-pista ce n'è sempre una sola.
+The remake keeps the recompiled C64 game as its engine and changes what you see and how it plays.
 
-**Le regole**: la palla si prende al contatto e non solo accucciandosi;
-fuoco più sinistra passa, fuoco più destra tira in porta, fuoco più giù cerca
-da solo il compagno libero; il fuoco da solo dà uno scatto che consuma la
-resistenza della squadra. Porte più larghe, rimbalzi sul muro, la carica che
-stende chi va più piano, difesa a zona che si sposta, un portiere e le scorte
-al portatore.
+**New look**
+- The arena, the crowd, the skaters and the panel redrawn, full screen (256 lines).
+- Four teams with their own colours: Tokyo, Napoli, Madrid, Moscow.
+- An announcer calling the action, in stereo.
+- A panel with a radar of the whole track.
 
-Ogni novità si può **riportare com'era sul C64** dalla pagina delle opzioni
-(F7 sulla schermata del titolo), una per una o tutte insieme.
+**The bikes**
+- **Kick-off on bikes.** After a goal, two bikes tow the team that conceded onto the track, and the ball comes down to their first towed skater.
+- **Bikes in play** (a power-up). Each team's power bar fills in 2 minutes of play. When it is full, hold fire to call your bike. It rides for 10 seconds and knocks down every opponent within its reach, never its own team; when its time is up it rides off fast. The computer teams call theirs too. One bike on the track at a time.
+
+**New rules**
+- The ball is caught on contact, not only when crouching.
+- Passes and shots: fire + left passes forward, fire + right shoots at goal, fire + up jumps with the ball.
+- The automatic pass: fire + down sends the ball to the nearest free team-mate.
+- Dash and stamina: fire alone gives a burst of speed, paid with the team's stamina.
+- Wider goals, rebounds off the wall.
+- The charge: whoever runs into an opponent knocks him down and stays up (the slower one falls).
+- The shot knocks down an opponent in its way.
+- Smarter computer teams: a moving zone defence, a keeper, escorts for the carrier.
+- 11 sprites: no skater jumping to the edge of the screen when the C64 runs out of sprites.
+- Both teams can be played by the computer (levels 1-6), with a demo on the title screen.
+- The title menu by joystick: up and down choose a key, left and right do it, fire plays.
+- The options are kept: saved in `rb_remake.cfg` next to the game when you leave the options page (the options saved with 1.x are read).
+- Every option works, the fall rules too (C64, REMAKE, CHARGE).
+
+**Every new rule can be switched back to the C64's** on the options page (F7 on the title screen), one by one or all at once (ball catch, fire controls and dash change together).
+
+## Requirements
+
+| Edition | Memory | CPU | Kickstart | Chipset |
+|---|---|---|---|---|
+| Rocketball 2.0 (original) | 1 MB: 512 KB chip + 512 KB other memory (WHDLoad: 512 KB chip + 704 KB fast) | 68000 (`rb_a500`, a stock A500) or 68020 or better (`rb`) | 1.3 or later | OCS, ECS, AGA |
+| Rocketball Remake 2.0 | 1 MB chip + about 1.2 MB other memory | a fast Amiga: PiStorm, a fast 68030, 68040 / 68060 accelerators, emulators with JIT | 2.0 or later recommended | ECS or AGA (1 MB chip; an OCS Amiga has at most 512 KB) |
+
+The remake is made for fast Amigas. A stock A1200 (2 MB chip, no fast memory) cannot start it; with a 68020 and fast memory the game keeps its speed but shows about 12 pictures a second.
+
+**Tested:**
+- On a real Amiga with a PiStorm.
+- In WinUAE: the original on an A500 (68000) and on a 68030, the remake on a 68030; from AmigaDOS and with WHDLoad.
+
+## Downloads
+
+| File | Size | What it is |
+|---|---|---|
+| `Rocketball_v2.0.lha` | 723 KB | **Original edition, WHDLoad pack**: the C64 game for a stock A500 (rb_a500, 68000) and for a 68020 or better (rb); WHDLoad, or the DOS icon without WHDLoad |
+| `Rocketball_Remake_v2.0.lha` | 1.3 MB | **Remake, WHDLoad pack**: new graphics, an announcer, the bikes and new rules, for fast Amigas; WHDLoad, or the DOS icon without WHDLoad |
+| `Rocketball_Amiga_ADF_v2.0_2026-10-30.zip` | 306 KB | **Original edition, floppy**: a bootable ADF (a menu: 1 the A500 version, 2 the 68020 one, and an installer) with the readme files |
+
+**Installation.** The ADF holds the original edition and boots into a menu: 1 the A500 version, 2 the 68020 one. From the Workbench, its Install icon puts it on the hard disk. The remake (1.3 MB) does not fit a floppy: hard disk only. For the hard disk, unpack a .lha pack anywhere: its DOS icon starts the game straight from AmigaDOS, with no WHDLoad needed (on a 68000 it starts the A500 version). With WHDLoad (17 or later), from the Shell: `WHDLoad Rocketball.slave` (68020), `WHDLoad RocketballA500.slave` (A500) or `WHDLoad RocketballRemake.slave`.
+
+Updating from 1.x: replace everything (the WHDLoad drawer, the .lha pack, the floppy). The 1.x port stays available on GitHub.
+
+## Controls
+
+Joystick in port 2, or the cursor keys with SPACE or CTRL to fire. In the original's two-player mode, team 1 uses port 1.
+
+| Title screen | Original | Remake |
+|---|---|---|
+| F1 / F3 | Team 1 / team 2 colour | Team 1 / team 2 colour (the team) |
+| F5 | Level against the computer (1-6) or two players | Team 1: human or computer (levels 1-6) |
+| F6 | | Team 2: human or computer (levels 1-6) |
+| F7 | Border colour | The options (the rules) |
+| Fire | Start the match | Start the match |
+
+In the remake the joystick also works the title menu: up / down choose a key, left / right do it, fire plays.
+
+| In play | Without the ball | With the ball (remake) |
+|---|---|---|
+| Fire + up | Jump | Jump with the ball |
+| Fire + down | Crouch (catch a rolling ball) | Automatic pass |
+| Fire + left / right | Strike (elbow) | Pass forward / shot at goal |
+| Fire alone | Dash (remake) | |
+| Fire held | Call your bike when the power bar is full (remake) | |
+
+P or HELP: pause. BACKSPACE or R: back to the title. ESC or F10: quit.
+
+The full controls, the options one by one and some advice on play are in the manual.
+
+## Feedback
+
+Please report what you find: every report helps.
+
+## Support
+
+The game is free. If you enjoyed it, a donation helps bring more C64 classics to the Amiga.
+
+## Credits
+
+- **Rocketball**, Commodore 64, © 1985 IJK Software: programmed by John Sinclair, music by L. Pilling. Published in Italy as Roller Ball.
+- Inspired by the film *Rollerball* (1975).
+- **Amiga conversion and remake:** Massimo Bonomo, 2026.
+
+---
+
+*This is a fan tribute. Rocketball is © 1985 IJK Software. Rollerball (1975) is cited only as the original game's inspiration; this project is not affiliated with its rights holders.*

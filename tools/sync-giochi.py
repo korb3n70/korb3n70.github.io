@@ -28,6 +28,7 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 # --------------------------------------------------------------------------
@@ -51,6 +52,27 @@ CHANGELOG_MAX = 6
 # Il marcatore non puo' contenere "---": quella sequenza a inizio riga
 # delimita il front matter, e Jekyll taglierebbe il file proprio li'.
 MARCATORE = "# >>> da qui in giu' scrive sync-giochi.py: non modificare a mano"
+
+# La pagina del sito, scritta nel repo del gioco e allegata alla release.
+# Quando c'e', e' lei la fonte: testo, sommario, requisiti ed etichette dei
+# download vengono da li', in inglese. Questo script traduce i NOMI dei campi
+# in quelli che il layout del blog gia' conosce, non il contenuto.
+PAGINA = "game.md"
+
+CAMPI = {
+    "platform": "piattaforma",
+    "original": "originale",
+    "original_year": "anno_originale",
+    "summary": "sommario",
+    "requirements": "requisiti",
+}
+
+# Campi di game.md che il blog non usa: versione e data si prendono dalla
+# release, che e' la fonte di verita' su cosa e' davvero pubblicato; le
+# schermate le costruisce questo script dai file in promo/, con i percorsi
+# giusti; page_url punta a game.md stesso; downloads viene ricostruito dagli
+# allegati veri e arricchito con le etichette di game.md.
+CAMPI_SCARTATI = {"version", "date", "screenshots", "page_url", "downloads", "repo"}
 
 GH = shutil.which("gh") or r"C:\Program Files\GitHub CLI\gh.exe"
 
@@ -101,6 +123,71 @@ def etichetta(nome_file):
     return nome_file
 
 
+def blocchi_yaml(fm):
+    """Divide un front matter nei suoi campi di primo livello.
+
+    Restituisce (chiave, righe) conservando le righe come sono scritte: liste,
+    blocchi letterali e stringhe su piu' righe restano intatti. Serve proprio a
+    non dover interpretare lo YAML per rinominare una chiave.
+    """
+    blocchi, chiave, righe = [], None, []
+    for r in fm.splitlines():
+        m = re.match(r"^([A-Za-z_][A-Za-z0-9_]*):(.*)$", r)
+        if m:
+            if chiave is not None:
+                blocchi.append((chiave, righe))
+            chiave, righe = m.group(1), [r]
+        elif chiave is not None:
+            righe.append(r)
+    if chiave is not None:
+        blocchi.append((chiave, righe))
+    return blocchi
+
+
+def pagina_release(repo, tag, assets):
+    """game.md allegato alla release: (front matter, corpo), oppure None."""
+    if not any(a["name"] == PAGINA for a in assets):
+        return None
+
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        subprocess.run(
+            [GH, "release", "download", tag, "--repo", repo,
+             "--pattern", PAGINA, "--dir", str(tmp), "--clobber"],
+            check=True, capture_output=True,
+        )
+        testo = (tmp / PAGINA).read_text(encoding="utf-8")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    m = re.match(r"^---\r?\n(.*?)\r?\n---\r?\n?(.*)$", testo, re.S)
+    if not m:
+        raise SystemExit(f"{repo}: {PAGINA} non ha un front matter riconoscibile.")
+    return m.group(1), m.group(2)
+
+
+def etichette_da_pagina(fm):
+    """Etichetta e descrizione di ogni file, dal blocco downloads di game.md."""
+    out, corrente, dentro = {}, None, False
+    for r in fm.splitlines():
+        if re.match(r"^downloads:", r):
+            dentro = True
+            continue
+        if dentro and re.match(r"^[A-Za-z_]", r):
+            break
+        if not dentro:
+            continue
+        m = re.match(r"\s*-\s*file:\s*(.+)$", r)
+        if m:
+            corrente = m.group(1).strip().strip('"')
+            out[corrente] = {}
+            continue
+        m = re.match(r"\s+(label|description):\s*(.+)$", r)
+        if m and corrente:
+            out[corrente][m.group(1)] = m.group(2).strip().strip('"')
+    return out
+
+
 def yaml_testo(s):
     """Stringa YAML sempre fra virgolette: i titoli contengono ':' e apostrofi."""
     return '"' + str(s).replace("\\", "\\\\").replace('"', '\\"') + '"'
@@ -134,6 +221,9 @@ def release_completa(repo, tag):
 def scarica_allegati(repo, tag, assets, dest, scrivi):
     """Scarica gli allegati mancanti e toglie quelli di versioni superate."""
     cambi = []
+    # game.md e' la pagina del sito, non un file da scaricare: non va fra i
+    # download e non deve finire sul server accanto agli archivi dei giochi.
+    assets = [a for a in assets if a["name"] != PAGINA]
     attesi = {a["name"] for a in assets}
 
     if scrivi:
@@ -200,11 +290,24 @@ def scarica_schermate(repo, slug, scrivi):
 # Scrittura del file del gioco
 # --------------------------------------------------------------------------
 
-def front_matter_generato(slug, repo, rel, tutte, schermate):
+def front_matter_generato(slug, repo, rel, tutte, schermate, pagina):
     """Costruisce la parte di front matter che questo script possiede."""
-    assets = sorted(rel["assets"], key=lambda a: a["name"])
-    righe = [
-        MARCATORE,
+    assets = sorted((a for a in rel["assets"] if a["name"] != PAGINA),
+                    key=lambda a: a["name"])
+    righe = [MARCATORE]
+    etichette = {}
+
+    if pagina:
+        fm_pagina = pagina[0]
+        etichette = etichette_da_pagina(fm_pagina)
+        for chiave, blocco in blocchi_yaml(fm_pagina):
+            if chiave in CAMPI_SCARTATI:
+                continue
+            blocco = list(blocco)
+            blocco[0] = blocco[0].replace(chiave + ":", CAMPI.get(chiave, chiave) + ":", 1)
+            righe.extend(blocco)
+
+    righe += [
         f"versione: {yaml_testo(rel['tagName'].lstrip('v'))}",
         f"data_versione: {rel['publishedAt'][:10]}",
         f"cartella: {slug}",
@@ -218,9 +321,12 @@ def front_matter_generato(slug, repo, rel, tutte, schermate):
 
     righe.append("download:")
     for a in assets:
-        righe.append(f"  - nome: {yaml_testo(etichetta(a['name']))}")
+        info = etichette.get(a["name"], {})
+        righe.append(f"  - nome: {yaml_testo(info.get('label') or etichetta(a['name']))}")
         righe.append(f"    file: {yaml_testo(a['name'])}")
         righe.append(f"    dimensione: {yaml_testo(peso(a['size']))}")
+        if info.get("description"):
+            righe.append(f"    descrizione: {yaml_testo(info['description'])}")
 
     # Solo le ultime release: la pagina del gioco non e' un archivio, e dopo
     # qualche versione il changelog diventa piu' lungo del gioco stesso.
@@ -239,7 +345,7 @@ def front_matter_generato(slug, repo, rel, tutte, schermate):
     return "\n".join(righe)
 
 
-def aggiorna_file(slug, repo, rel, tutte, schermate, scrivi):
+def aggiorna_file(slug, repo, rel, tutte, schermate, pagina, scrivi):
     percorso = BLOG / "_giochi" / f"{slug}.md"
 
     if not percorso.exists():
@@ -266,7 +372,17 @@ def aggiorna_file(slug, repo, rel, tutte, schermate, scrivi):
         # Via la parte generata la volta scorsa, resta quella scritta a mano.
         manuale = "---\n" + fm.split(MARCATORE)[0].rstrip() + "\n"
 
-    nuovo = manuale + "\n" + front_matter_generato(slug, repo, rel, tutte, schermate) + "\n---" + corpo
+    if pagina:
+        # Con game.md la pagina appartiene al repo del gioco: testo, sommario e
+        # requisiti arrivano da li'. Al blog resta solo 'order', che e' una
+        # scelta su come ordinare l'elenco e non riguarda il gioco.
+        ordine = re.search(r"^order:.*$", manuale, re.M)
+        manuale = "---\n" + (ordine.group(0) if ordine else "order: 99") + "\n"
+        corpo = "\n" + pagina[1].lstrip("\n")
+
+    nuovo = (manuale + "\n"
+             + front_matter_generato(slug, repo, rel, tutte, schermate, pagina)
+             + "\n---" + corpo)
 
     if percorso.exists() and percorso.read_text(encoding="utf-8") == nuovo:
         return None
@@ -308,7 +424,19 @@ def main():
         c2, schermate = scarica_schermate(repo, slug, args.scrivi)
         cambi += c2
 
-        riga = aggiorna_file(slug, repo, rel, complete, schermate, args.scrivi)
+        pagina = pagina_release(repo, rel["tagName"], rel["assets"])
+        if pagina:
+            print(f"  pagina dal repo: {PAGINA} (inglese)")
+            nei_file = {a["name"] for a in rel["assets"] if a["name"] != PAGINA}
+            nella_pagina = set(etichette_da_pagina(pagina[0]))
+            for f in sorted(nella_pagina - nei_file):
+                cambi.append(f"  ! {f}: in {PAGINA} ma non allegato alla release")
+            for f in sorted(nei_file - nella_pagina):
+                cambi.append(f"  ! {f}: allegato alla release ma assente da {PAGINA}")
+        else:
+            print(f"  nessun {PAGINA} nella release: pagina come prima")
+
+        riga = aggiorna_file(slug, repo, rel, complete, schermate, pagina, args.scrivi)
         if riga:
             cambi.append(riga)
 

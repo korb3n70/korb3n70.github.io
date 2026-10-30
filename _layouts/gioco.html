@@ -9,15 +9,17 @@ layout: page
   <!-- Intestazione: piattaforma, versione e data dell'ultima release -->
   <p class="gioco-meta">
     {% if page.piattaforma %}<span class="gioco-tag">{{ page.piattaforma }}</span>{% endif %}
-    {% if page.anno_originale %}
-      <span class="gioco-tag">dall'originale del {{ page.anno_originale }}</span>
+    {% if page.originale %}
+      <span class="gioco-tag">from {{ page.originale }}</span>
+    {% elsif page.anno_originale %}
+      <span class="gioco-tag">from the {{ page.anno_originale }} original</span>
     {% endif %}
     {% if page.versione %}
-      <span>versione <b>{{ page.versione }}</b></span>
+      <span>version <b>{{ page.versione }}</b></span>
     {% endif %}
     {% if page.data_versione %}
       <span class="gioco-sep">·</span>
-      <time datetime="{{ page.data_versione }}">{{ page.data_versione | date: '%d/%m/%Y' }}</time>
+      <time datetime="{{ page.data_versione }}">{{ page.data_versione | date: '%d %B %Y' }}</time>
     {% endif %}
     <span class="gioco-sep">·</span>
     {% include statsrv-views.html %}
@@ -54,7 +56,7 @@ layout: page
   </div>
 
   <!-- Download -->
-  <h2 id="download">Scarica</h2>
+  <h2 id="download">Downloads</h2>
 
   {% if page.download and page.download.size > 0 %}
     <div class="gioco-download">
@@ -68,14 +70,14 @@ layout: page
           <div class="gioco-versione-testo">
             <b>{{ d.nome }}</b>
             {% if d.dimensione %}<span class="gioco-peso">{{ d.dimensione }}</span>{% endif %}
-            {% if d.note %}<p>{{ d.note }}</p>{% endif %}
+            {% if d.descrizione %}<p>{{ d.descrizione }}</p>{% elsif d.note %}<p>{{ d.note }}</p>{% endif %}
           </div>
           <!--
             data-statsrv-ignore: il download lo conta il server che serve il
             file, non serve contarlo una seconda volta come click esterno.
           -->
           <a class="btn btn-primary" href="{{ url }}" rel="noopener" data-statsrv-ignore>
-            <i class="fas fa-download"></i> Scarica
+            <i class="fas fa-download"></i> Download
           </a>
         </div>
       {% endfor %}
@@ -85,21 +87,21 @@ layout: page
       <p class="gioco-requisiti">{{ page.requisiti }}</p>
     {% endif %}
   {% else %}
-    <p class="text-muted">Il primo rilascio pubblico sta arrivando.</p>
+    <p class="text-muted">The first public release is on its way.</p>
   {% endif %}
 
   {% include dona.html %}
 
   <!-- Changelog -->
   {% if page.changelog and page.changelog.size > 0 %}
-    <h2 id="changelog">Cos'è cambiato</h2>
+    <h2 id="changelog">What's changed</h2>
     <div class="gioco-changelog">
       {% for v in page.changelog %}
         <div class="gioco-rilascio">
           <h3>
             {{ v.versione }}
             {% if v.data %}
-              <span class="gioco-data">{{ v.data | date: '%d/%m/%Y' }}</span>
+              <span class="gioco-data">{{ v.data | date: '%d %B %Y' }}</span>
             {% endif %}
           </h3>
           {% if v.note %}{{ v.note | markdownify }}{% endif %}

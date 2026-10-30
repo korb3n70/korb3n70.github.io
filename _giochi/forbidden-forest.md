@@ -1,17 +1,20 @@
 ---
-title: Forbidden Forest
-piattaforma: Amiga 500
-anno_originale: 1983
 order: 2
-sommario: >-
-  L'horror di Paul Norman del 1983 portato su Amiga in tre edizioni: due
-  fedeli al pixel e un remake a schermo pieno con cielo in parallasse.
-requisiti: >-
-  Versione fedele: Amiga 500 con 512 KB chip + 512 KB di altra memoria.
-  Versione veloce e remake: Amiga con scheda acceleratrice, PiStorm o
-  emulatore con JIT.
 
 # >>> da qui in giu' scrive sync-giochi.py: non modificare a mano
+title: "Forbidden Forest"
+piattaforma: "Amiga"
+originale: "Commodore 64, Cosmi, 1983 (Paul Norman)"
+anno_originale: 1983
+sommario: >-
+  Paul Norman's 1983 C64 horror masterpiece on the Amiga: two purist editions, recompiled from
+  the original code and faithful to the last pixel, and a remake with new graphics, a living sky
+  and three planes of parallax.
+requisiti: >-
+  Purist (A500): 512 KB chip + 512 KB. Fast: the same and a fast CPU. Remake: 1 MB chip (ECS
+  Agnus) + 1 MB fast and a fast CPU (68030 or better, PiStorm); with WHDLoad 512 KB chip + 1.2 MB
+  fast. Kickstart 1.3 or later, OCS / ECS / AGA.
+release_url: "https://github.com/korb3n70/forbidden-forest-amiga/releases/tag/v1.2.3"
 versione: "1.2.3"
 data_versione: 2026-10-26
 cartella: forbidden-forest
@@ -24,18 +27,22 @@ schermate:
   - file: /assets/img/giochi/forbidden-forest/forbidden_forest_amiga_remake_2_title_paul_norman.png
   - file: /assets/img/giochi/forbidden-forest/forbidden_forest_amiga_remake_3_gameplay_spider.png
 download:
-  - nome: "WHDLoad · versione veloce"
+  - nome: "Purist edition for fast Amigas, WHDLoad pack"
     file: "ForbiddenForestFast_v1.2.3.lha"
     dimensione: "114 KB"
-  - nome: "WHDLoad · remake"
+    descrizione: "the original game with the sound mixed at 28 kHz; WHDLoad, or the DOS icon without WHDLoad"
+  - nome: "Remake, WHDLoad pack"
     file: "ForbiddenForestRemake_v1.2.3.lha"
     dimensione: "166 KB"
-  - nome: "Dischetti ADF (floppy o emulatore)"
+    descrizione: "new graphics, a living sky, three planes of parallax; fast Amigas (68030 or better, PiStorm); WHDLoad, or the DOS icon without WHDLoad"
+  - nome: "Floppies"
     file: "ForbiddenForest_Amiga_ADF_v1.2.3_2026-10-26.zip"
     dimensione: "453 KB"
-  - nome: "WHDLoad · versione fedele"
+    descrizione: "one bootable ADF per edition, one disk with both fast editions and an installer (ForbiddenForest_FastAmigas.adf), the readme files"
+  - nome: "Purist edition (A500), WHDLoad pack"
     file: "ForbiddenForest_v1.2.3.lha"
     dimensione: "112 KB"
+    descrizione: "the original C64 graphics and gameplay, the SID voices on Paula; a stock A500 with 1 MB"
 changelog:
   - versione: "1.2.3"
     data: 2026-10-26
@@ -82,66 +89,115 @@ changelog:
 
       First release published as a GitHub Release; nothing renamed since (the earlier tags had no packs).
 ---
-Certi giochi si ricordano per come si giocano. **Forbidden Forest** (Cosmi,
-1983) si ricorda per come ti faceva *sentire*.
+Some games are remembered for their gameplay. **Forbidden Forest** (Cosmi, 1983) is remembered for how it made you *feel*.
 
-Su un Commodore 64 Paul Norman mise in piedi qualcosa che nessuno aveva ancora
-visto: una foresta che respira, con il cielo che passa dal giorno al tramonto
-alla notte stellata, sfondi in parallasse, ragni giganti, api, rane, draghi, un
-serpente e scheletri che escono dalla terra. E in fondo il Demogorgone, che non
-si vede finché un lampo non lo illumina. Era cinematografico, violento e
-davvero spaventoso anni prima che qualcuno parlasse di *survival horror*.
+On a humble Commodore 64, Paul Norman built something nobody had seen before:
+- a forest that breathes, with a sky that moves from day to dusk to a starry night;
+- parallax backgrounds;
+- giant spiders, bees, frogs, dragons, a snake and skeletons rising from the ground;
+- and finally the Demogorgon, unseen in the darkness until the lightning reveals it.
 
-## Perché proprio questo
+It was cinematic, violent and genuinely frightening, years before anyone spoke of "survival horror".
 
-L'ho affrontato per ammirazione verso Paul Norman. Il suo colpo di genio non fu
-tecnico ma emotivo: costruire un'atmosfera e un impatto da film dentro i limiti
-di una macchina a 8 bit. Convertirlo significa avere a che fare con un'opera in
-cui ogni elemento serviva a una cosa sola, la tensione: il ciclo giorno-notte,
-la parallasse, la violenza esplicita.
+This project brings that masterpiece to the Amiga in three editions: two purist ones, faithful to the last pixel, and a remake that reimagines its world with new graphics while keeping its soul intact.
 
-Musica ed effetti pesano quanto il resto, e li compose lui stesso sul SID.
-Conservarli per davvero, compreso il ronzio minaccioso delle api, è il modo
-migliore di rendergli omaggio.
+## Why This Game
 
-## Fedeltà al codice originale
+I took on Forbidden Forest out of admiration for Paul Norman and his pioneering vision.
 
-Il principio è lo stesso del mio port di Wizard of Wor: la logica di gioco non
-si reinterpreta mai. Il codice 6502 è stato **ricompilato staticamente** in
-68000 nativo, quindi tradotto e non emulato: gli stessi mostri, gli stessi
-schemi, gli stessi tempi al ciclo di clock.
+His real genius was creating an astonishing atmosphere and a truly cinematic impact within the limits of 8-bit hardware. Converting this game means facing a complete work of art, where every element served one purpose: building emotional tension. The dynamic day/night cycle, the parallax backgrounds and the explicit graphic violence all work towards it.
 
-A dimostrarlo c'è una prova in *lockstep*: il codice ricompilato gira fianco a
-fianco con un C64 di riferimento, fotogramma dopo fotogramma, confrontando
-memoria, registri e cicli attraverso ogni mostro e ogni fase. Copre tutte le
-routine del gioco.
+Music and sound design play a fundamental part. Paul Norman composed and crafted them himself on the C64's SID chip. Faithfully preserving his score and his dynamic sound effects, such as the menacing buzz of the bees, is the ultimate tribute to an author who turned a simple video game into an unforgettable sensory experience.
 
-Solo tre cose sono cambiate di proposito, tutte per comodità di chi gioca:
+## Absolute Source Code Fidelity
 
-- la **danza di fine ondata** dura 12 secondi invece di 28;
-- l'**esplosione finale del Demogorgone** dura 10 secondi invece di 31;
-- il **suono della freccia a segno**, che nell'originale era debole, è stato
-  rifatto con rumore del SID filtrato.
+The guiding principle was the same as in my Wizard of Wor port: the original game logic is never reinterpreted.
 
-## L'audio
+The original 6502 code was statically recompiled into native 68000 code. It is translated, not emulated, so the Amiga runs Paul Norman's own program: the same monsters, the same patterns and the same timing, down to the CPU cycle.
 
-- **Registrato dal SID**: le tre voci sono ricostruite da registrazioni di un
-  6581 (reSID), con forme d'onda a banda limitata.
-- **Suonato da Paula sull'A500**: ogni voce del SID gira in loop su un canale
-  hardware. La musica resta intonata, non costa quasi nulla al processore e non
-  si interrompe nemmeno quando sullo schermo succede di tutto.
-- **Miscelato a 28 kHz** nelle edizioni per Amiga veloci.
+To prove it, a lockstep test runs the recompiled code side by side with a reference C64, frame after frame, comparing memory, registers and cycle counts through every monster and every phase of the game. Every routine of the game is covered.
 
-## Tre edizioni
+Only a few things were deliberately changed, all small quality-of-life touches:
+- **The end-of-wave dance** is shorter, about 12 seconds instead of 28.
+- **The Demogorgon's final explosion** is shorter, about 10 seconds instead of 31.
+- **The arrow-hit sound:** the original effect was weak, so it was replaced by a new "splat" made from filtered SID noise.
 
-**Fedele (A500)** e **Fedele veloce**: grafica e gioco originali come li
-disegnò Paul Norman, ma la foresta scorre liscia invece di saltare di otto
-pixel per volta, e l'arciere usa gli sprite hardware dell'Amiga.
+## Authentic SID Sound
 
-**Remake**: grafica nuova a schermo pieno (368 × 256, senza bordi) nello stile
-di *Another World*, tre piani in parallasse, un cielo vivo che passa dal giorno
-al tramonto alla notte, la luna che attraversa il cielo dietro agli alberi e ai
-lampi, i mostri che passano dietro gli oggetti della foresta, e un pannello più
-leggibile con le frecce rimaste nella faretra e le vite accanto a un cuore
-rosso. L'arciere è quello originale, con tutte le sue animazioni, ricolorato
-per il mondo nuovo.
+The music and effects are the heart of Forbidden Forest's atmosphere, so the audio received the same care as the code:
+- **Recorded from the SID:** the three voices are rebuilt from recordings of the 6581 SID chip (reSID), with band-limited waveforms for clean, faithful tones.
+- **Played by Paula on the A500:** each SID voice loops on one of Paula's own hardware channels. You get the music at its true pitch with almost no CPU cost, and with no gaps even when the action is heavy.
+- **Mixed at 28 kHz on fast Amigas:** in the faster editions the voices are mixed in software at high quality.
+
+## Two Souls: Purist and Remake
+
+**Forbidden Forest (purist, A500)** and **Forbidden Forest Fast (purist, fast Amigas)**
+- The original C64 graphics and gameplay, exactly as Paul Norman drew them.
+- The forest now scrolls smoothly instead of the C64's 8-pixel jumps.
+- The archer is drawn with the Amiga's hardware sprites.
+
+**Forbidden Forest Remake (fast Amigas, PiStorm)**
+- New full-screen graphics (368 × 256, no borders) in the style of Another World.
+- Three planes in parallax: the sky, the distant hills and the foreground.
+- A living sky: day, late afternoon, sunset and night, with the lightning flashing across it.
+- The moon crosses the sky behind the trees and clouds. At dusk, and in the Demogorgon's wave, the stars come out, fixed in the sky just as on the C64.
+- The original archer, with every one of his C64 animations, recoloured to match the new world.
+- Monsters move inside the forest and pass behind trees and objects.
+- Redrawn intro titles.
+- A clearer HUD: the arrows left in your quiver, and your lives next to a red heart.
+
+## Why This Version?
+
+Paul Norman squeezed a whole cinematic world into 64 KB. This port stems from the desire to let that world shine on the Amiga:
+- untouched in its rules and timing;
+- smoother in its scrolling;
+- and, in the remake, dressed the way the 1983 vision deserved, with today's tools.
+
+If you love the classics, or if you remember being scared by a forest on your C64, this version will take you straight back to 1983, with a modern edge.
+
+## Downloads
+
+| File | Size | What it is |
+|---|---|---|
+| `ForbiddenForest_v1.2.3.lha` | 112 KB | **Purist edition (A500), WHDLoad pack**: the original C64 graphics and gameplay, the SID voices on Paula; a stock A500 with 1 MB |
+| `ForbiddenForestFast_v1.2.3.lha` | 114 KB | **Purist edition for fast Amigas, WHDLoad pack**: the original game with the sound mixed at 28 kHz; WHDLoad, or the DOS icon without WHDLoad |
+| `ForbiddenForestRemake_v1.2.3.lha` | 166 KB | **Remake, WHDLoad pack**: new graphics, a living sky, three planes of parallax; fast Amigas (68030 or better, PiStorm); WHDLoad, or the DOS icon without WHDLoad |
+| `ForbiddenForest_Amiga_ADF_v1.2.3_2026-10-26.zip` | 453 KB | **Floppies**: one bootable ADF per edition, one disk with both fast editions and an installer (ForbiddenForest_FastAmigas.adf), the readme files |
+
+**Installation.** Each ADF boots its own edition. For fast Amigas, `ForbiddenForest_FastAmigas.adf` holds both fast editions: from the floppy a menu (1 Fast, 2 Remake, 3 install on the hard disk); from the Workbench its Install icon puts them on the hard disk, with icons that start the game straight from AmigaDOS, without WHDLoad. For the hard disk, unpack a .lha pack anywhere and double-click its icon, or from the Shell: `WHDLoad ForbiddenForest.slave`, `WHDLoad ForbiddenForestFast.slave` or `WHDLoad ForbiddenForestRemake.slave`. The fast packs also carry a DOS icon that starts the game without WHDLoad (on a PiStorm WHDLoad slows the fast editions down).
+
+## Requirements
+
+| Edition | Floppy / hard disk | WHDLoad |
+|---|---|---|
+| Purist (A500) | 512 KB chip + 512 KB | 512 KB chip + 512 KB fast |
+| Fast | 512 KB chip + 512 KB, fast CPU | 512 KB chip + 512 KB fast |
+| Remake | 1 MB chip (ECS Agnus) + 1 MB fast, fast CPU (68030 or better, PiStorm) | 512 KB chip + 1.2 MB fast |
+
+Kickstart 1.3 or later. OCS, ECS or AGA. WHDLoad 17 or later.
+
+On a stock A500 the purist edition keeps the game and the music at full speed by skipping some display frames while the forest scrolls. Fast RAM or an accelerator gives the full 50 frames per second.
+
+## Controls
+
+Joystick in port 2, or the cursor keys with SPACE or CTRL to fire.
+
+| Key | Action |
+|---|---|
+| F1 / F3 / F5 / F7 | Choose the difficulty on the title page |
+| P or HELP | Pause |
+| F2 / F4 | Volume down / up |
+| BACKSPACE | RUN/STOP |
+| ESC or F10 | Quit (with WHDLoad: back to the Workbench) |
+
+## Support the Project
+
+Creating this kind of port requires countless hours of reverse engineering, recompilation, hardware testing, and a genuine passion for preserving retrogaming history.
+
+If you enjoy the game and would like to support the development of this and future retrocomputing projects, please consider making a small donation. Even a tiny contribution helps cover resource costs and keeps the drive alive for future releases!
+
+Thank you so much for your support, and... watch out for the spiders in the forest!
+
+---
+
+*Original game: Paul Norman, Cosmi, 1983. Amiga conversion: Massimo Bonomo, 2026. This is a fan tribute; Forbidden Forest is © 1983 Cosmi / Paul Norman.*

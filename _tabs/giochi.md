@@ -1,11 +1,11 @@
 ---
-title: Giochi
+title: Games
 icon: fas fa-gamepad
 order: 1
 ---
 
-Conversioni e remake per **Amiga** e **Commodore 64**, scritti in Assembly.
-Si scaricano gratis: niente registrazione, niente negozio di mezzo.
+Conversions and remakes for the **Amiga** and the **Commodore 64**, written in Assembly.
+Free to download: no sign-up, no store in the way.
 
 <div class="giochi-elenco">
   {% assign elenco = site.giochi | sort: 'order' %}
@@ -27,16 +27,16 @@ Si scaricano gratis: niente registrazione, niente negozio di mezzo.
         <p class="giochi-scheda-meta">
           {% if g.versione %}v{{ g.versione }}{% endif %}
           {% if g.versione and g.data_versione %}<span class="gioco-sep">&middot;</span>{% endif %}
-          {% if g.data_versione %}{{ g.data_versione | date: "%d/%m/%Y" }}{% endif %}
+          {% if g.data_versione %}{{ g.data_versione | date: "%d %B %Y" }}{% endif %}
         </p>
         <p class="giochi-scheda-vai">
-          <a href="{{ g.url | relative_url }}">Scheda e download &rarr;</a>
+          <a href="{{ g.url | relative_url }}">Details and downloads &rarr;</a>
         </p>
       </div>
     </article>
   {% endfor %}
 
   {% if elenco.size == 0 %}
-    <p class="text-muted">Ancora niente da scaricare. Torna a trovarmi.</p>
+    <p class="text-muted">Nothing to download yet. Come back soon.</p>
   {% endif %}
 </div>
