@@ -1,0 +1,112 @@
+---
+layout: page
+# Scheda di un gioco: schermate, video, download per versione, changelog.
+---
+
+{% include lang.html %}
+
+<div class="gioco">
+  <!-- Intestazione: piattaforma, versione e data dell'ultima release -->
+  <p class="gioco-meta">
+    {% if page.piattaforma %}<span class="gioco-tag">{{ page.piattaforma }}</span>{% endif %}
+    {% if page.anno_originale %}
+      <span class="gioco-tag">dall'originale del {{ page.anno_originale }}</span>
+    {% endif %}
+    {% if page.versione %}
+      <span>versione <b>{{ page.versione }}</b></span>
+    {% endif %}
+    {% if page.data_versione %}
+      <span class="gioco-sep">·</span>
+      <time datetime="{{ page.data_versione }}">{{ page.data_versione | date: '%d/%m/%Y' }}</time>
+    {% endif %}
+    <span class="gioco-sep">·</span>
+    {% include statsrv-views.html %}
+  </p>
+
+  {% if page.sommario %}
+    <p class="gioco-sommario">{{ page.sommario }}</p>
+  {% endif %}
+
+  <!-- Schermate -->
+  {% if page.schermate and page.schermate.size > 0 %}
+    <div class="gioco-schermate">
+      {% for s in page.schermate %}
+        <figure>
+          <img
+            src="{{ s.file | relative_url }}"
+            alt="{{ s.alt | default: page.title }}"
+            loading="lazy"
+          >
+          {% if s.didascalia %}<figcaption>{{ s.didascalia }}</figcaption>{% endif %}
+        </figure>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- Video -->
+  {% if page.youtube %}
+    {% include embed/youtube.html id=page.youtube %}
+  {% endif %}
+
+  <!-- Descrizione (il corpo del file del gioco) -->
+  <div class="gioco-testo">
+    {{ content }}
+  </div>
+
+  <!-- Download -->
+  <h2 id="download">Scarica</h2>
+
+  {% if page.download and page.download.size > 0 %}
+    <div class="gioco-download">
+      {% for d in page.download %}
+        {% assign url = site.scarica.download_base
+            | append: '/'
+            | append: page.cartella
+            | append: '/'
+            | append: d.file %}
+        <div class="gioco-versione">
+          <div class="gioco-versione-testo">
+            <b>{{ d.nome }}</b>
+            {% if d.dimensione %}<span class="gioco-peso">{{ d.dimensione }}</span>{% endif %}
+            {% if d.note %}<p>{{ d.note }}</p>{% endif %}
+          </div>
+          <!--
+            data-statsrv-ignore: il download lo conta il server che serve il
+            file, non serve contarlo una seconda volta come click esterno.
+          -->
+          <a class="btn btn-primary" href="{{ url }}" rel="noopener" data-statsrv-ignore>
+            <i class="fas fa-download"></i> Scarica
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if page.requisiti %}
+      <p class="gioco-requisiti">{{ page.requisiti }}</p>
+    {% endif %}
+  {% else %}
+    <p class="text-muted">Il primo rilascio pubblico sta arrivando.</p>
+  {% endif %}
+
+  {% include dona.html %}
+
+  <!-- Changelog -->
+  {% if page.changelog and page.changelog.size > 0 %}
+    <h2 id="changelog">Cos'è cambiato</h2>
+    <div class="gioco-changelog">
+      {% for v in page.changelog %}
+        <div class="gioco-rilascio">
+          <h3>
+            {{ v.versione }}
+            {% if v.data %}
+              <span class="gioco-data">{{ v.data | date: '%d/%m/%Y' }}</span>
+            {% endif %}
+          </h3>
+          {% if v.note %}{{ v.note | markdownify }}{% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% include statsrv-reazioni.html %}
+</div>

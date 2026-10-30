@@ -1,0 +1,26 @@
+<!--
+  Pulsante donazioni.
+
+  E' un link esterno, quindi statsrv lo conta da solo: nel pannello compare
+  nella scheda Giochi insieme alla pagina da cui e' partito il click.
+
+  Finche' in _config.yml manca l'ID del pulsante PayPal, qui non si disegna
+  niente: meglio una pagina senza pulsante che un pulsante che non incassa.
+-->
+{% assign bottone = site.scarica.paypal_button_id %}
+{% if bottone and bottone != '' %}
+  <div class="gioco-dona">
+    <a
+      class="btn btn-outline-secondary"
+      href="https://www.paypal.com/donate?hosted_button_id={{ bottone }}"
+      target="_blank"
+      rel="noopener external"
+    >
+      <i class="fas fa-heart"></i>
+      Offrimi un caffè
+    </a>
+    <p class="gioco-dona-nota">
+      {{ include.nota | default: 'I giochi sono gratuiti e lo restano. Se ti hanno fatto passare una bella serata, una donazione aiuta a tenere acceso il server.' }}
+    </p>
+  </div>
+{% endif %}

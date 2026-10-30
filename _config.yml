@@ -40,6 +40,19 @@ social:
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
 
+# Sezione Giochi.
+# La chiave non puo' chiamarsi "giochi": quel nome e' gia' della collezione
+# (site.giochi e' l'elenco dei giochi), e l'uno coprirebbe l'altro.
+scarica:
+  # I file non stanno su GitHub: li serve statsrv, che conta il download vero
+  # prima di consegnarli. L'indirizzo finisce con la chiave del sito.
+  download_base: https://www.bonomo.cloud/d/korb3n70
+
+  # Pulsante "Dona" di PayPal: si crea dal proprio conto e produce un ID
+  # (hosted_button_id). Si usa l'ID e non l'indirizzo email, altrimenti
+  # l'email finisce in chiaro nel sorgente di ogni pagina.
+  paypal_button_id: ""
+
 # Site Verification Settings
 webmaster_verifications:
   google: # fill in your Google verification code
@@ -167,6 +180,9 @@ collections:
   tabs:
     output: true
     sort_by: order
+  giochi:
+    output: true
+    sort_by: order
 
 defaults:
   - scope:
@@ -189,6 +205,13 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+  - scope:
+      path: ""
+      type: giochi
+    values:
+      layout: gioco
+      permalink: /giochi/:name/
+      toc: true
 
 sass:
   style: compressed
