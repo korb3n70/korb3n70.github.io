@@ -51,7 +51,12 @@ scarica:
   # Pulsante "Dona" di PayPal: si crea dal proprio conto e produce un ID
   # (hosted_button_id). Si usa l'ID e non l'indirizzo email, altrimenti
   # l'email finisce in chiaro nel sorgente di ogni pagina.
-  paypal_button_id: ""
+  paypal_button_id: "NQSZLRE3XPD7Y"
+
+  # Cifre citate nella finestra che precede il download. Solo testo: la scelta
+  # avviene sulla pagina di PayPal, che ignora l'importo passato nel link
+  # (provato). Se cambi gli importi del pulsante su PayPal, cambia anche qui.
+  paypal_importi: "€2, €5 or €10"
 
 # Site Verification Settings
 webmaster_verifications:

@@ -1,26 +1,239 @@
 <!--
-  Pulsante donazioni.
+  Donazioni nelle pagine dei giochi.
 
-  E' un link esterno, quindi statsrv lo conta da solo: nel pannello compare
-  nella scheda Giochi insieme alla pagina da cui e' partito il click.
+  Due pezzi:
+  1. un pulsante sempre visibile sotto i download;
+  2. una finestra che si frappone al primo download: propone la donazione,
+     e da li' si prosegue comunque col file.
 
-  Finche' in _config.yml manca l'ID del pulsante PayPal, qui non si disegna
-  niente: meglio una pagina senza pulsante che un pulsante che non incassa.
+  Il link a PayPal e' esterno, quindi statsrv conta i click da solo: nel
+  pannello compaiono nella scheda Giochi, con la pagina di partenza.
+
+  In inglese come il resto delle pagine dei giochi. Il perche' donare e'
+  gia' scritto nella sezione Support di game.md: qui si parla di soldi e
+  di pulsanti, non si ripete il discorso.
+
+  Senza ID del pulsante in _config.yml non si disegna niente e i download
+  restano link normali: nessuna finestra, nessun intoppo.
 -->
 {% assign bottone = site.scarica.paypal_button_id %}
 {% if bottone and bottone != '' %}
+  {% assign importi = site.scarica.paypal_importi | default: '€2, €5 or €10' %}
+  {%- comment -%}
+    Niente amount nel link: PayPal lo ignora, gli importi proposti sono
+    quelli impostati nel pulsante (verificato: la pagina e' identica con
+    e senza). L'importo qui sotto serve solo a scriverlo sul bottone.
+  {%- endcomment -%}
+  {% capture url_dona %}https://www.paypal.com/donate/?hosted_button_id={{ bottone }}{% endcapture %}
+
   <div class="gioco-dona">
-    <a
-      class="btn btn-outline-secondary"
-      href="https://www.paypal.com/donate?hosted_button_id={{ bottone }}"
-      target="_blank"
-      rel="noopener external"
-    >
+    <a class="btn btn-outline-secondary" href="{{ url_dona }}" target="_blank" rel="noopener external">
       <i class="fas fa-heart"></i>
-      Offrimi un caffè
+      {{ include.etichetta | default: 'Donate' }}
     </a>
-    <p class="gioco-dona-nota">
-      {{ include.nota | default: 'I giochi sono gratuiti e lo restano. Se ti hanno fatto passare una bella serata, una donazione aiuta a tenere acceso il server.' }}
-    </p>
+    {% if include.nota %}<p class="gioco-dona-nota">{{ include.nota }}</p>{% endif %}
   </div>
+
+  <dialog class="gioco-modale" id="gioco-modale" aria-labelledby="gioco-modale-titolo">
+    <form method="dialog" class="gioco-modale-chiudi-form">
+      <button value="annulla" class="gioco-modale-chiudi" aria-label="Close">&times;</button>
+    </form>
+    <h3 id="gioco-modale-titolo">Before you download</h3>
+    <p>
+      This conversion is free, and it stays free. If you would like to sponsor
+      the project, a small donation helps keep it going.
+    </p>
+    <p class="gioco-modale-file">
+      <i class="fas fa-download"></i>
+      <span id="gioco-modale-nome"></span>
+      <span class="gioco-modale-peso" id="gioco-modale-peso"></span>
+    </p>
+    <div class="gioco-modale-scelte" id="gioco-modale-prima">
+      <a class="btn btn-primary" id="gioco-modale-dona" href="{{ url_dona }}" target="_blank" rel="noopener external">
+        <i class="fas fa-heart"></i>
+        Sponsor this project
+      </a>
+      <!-- autofocus qui: aprendo la finestra il fuoco finirebbe sulla X,
+           e Invio chiuderebbe senza scaricare. -->
+      <button type="button" class="btn btn-outline-secondary" id="gioco-modale-prosegui" autofocus>
+        No thanks, start the download
+      </button>
+    </div>
+    <div id="gioco-modale-dopo" hidden>
+      <p class="gioco-modale-attesa">
+        <b>Waiting for PayPal.</b> Finish there, or close that window: your
+        download starts as soon as it is gone.
+      </p>
+      <div class="gioco-modale-scelte">
+        <button type="button" class="btn btn-primary" id="gioco-modale-scarica">
+          <i class="fas fa-download"></i>
+          Start the download now
+        </button>
+      </div>
+    </div>
+    <p class="gioco-modale-nota" id="gioco-modale-nota">
+      {{ importi }}, or any amount you like &mdash; you choose on PayPal.
+      The download starts either way.
+    </p>
+  </dialog>
+
+  <style>
+    .gioco-modale {
+      max-width: 30rem;
+      width: calc(100% - 2rem);
+      padding: 1.5rem;
+      border: 1px solid var(--main-border-color);
+      border-radius: 10px;
+      background: var(--card-bg, var(--main-bg));
+      color: var(--text-color);
+    }
+    .gioco-modale::backdrop { background: rgb(0 0 0 / 55%); }
+    .gioco-modale h3 { margin: 0 0 0.6rem; }
+    .gioco-modale p { margin: 0; }
+    .gioco-modale-chiudi-form { float: right; margin: -0.5rem -0.5rem 0 0; }
+    .gioco-modale-chiudi {
+      border: 0;
+      background: none;
+      color: var(--text-muted-color);
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .gioco-modale-file {
+      margin-top: 1rem;
+      padding: 0.6rem 0.8rem;
+      border: 1px dashed var(--main-border-color);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      word-break: break-all;
+    }
+    .gioco-modale-peso { color: var(--text-muted-color); white-space: nowrap; }
+    .gioco-modale-attesa { margin-top: 1.2rem; font-size: 0.9rem; }
+    .gioco-modale-scelte {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 1.2rem 0 0.8rem;
+    }
+    .gioco-modale-scelte .btn { flex: 1 1 12rem; }
+    .gioco-modale-nota {
+      color: var(--text-muted-color);
+      font-size: 0.8rem;
+    }
+  </style>
+
+  <script>
+    (function () {
+      // PayPal si apre in una finestrella sopra la pagina, come il suo
+      // pulsante ufficiale: chi dona non perde di vista il gioco. Se il
+      // browser blocca le finestrelle, il link si comporta da link normale.
+      function apriPaypal(url) {
+        var w = 500, h = 760;
+        var x = window.screenX + Math.max(0, (window.outerWidth - w) / 2);
+        var y = window.screenY + Math.max(0, (window.outerHeight - h) / 2);
+        var pop = window.open(url, 'paypal-donate', 'popup=yes,width=' + w + ',height=' + h +
+          ',left=' + Math.round(x) + ',top=' + Math.round(y) + ',scrollbars=yes,resizable=yes');
+        if (!pop || pop.closed) return null;
+        try { pop.focus(); } catch (e) { /* niente fuoco: pazienza */ }
+        return pop;
+      }
+
+      // Il pulsante sempre visibile sotto i download.
+      var fisso = document.querySelector('.gioco-dona a');
+      if (fisso) {
+        fisso.addEventListener('click', function (ev) {
+          if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button !== 0) return;
+          if (apriPaypal(fisso.href)) ev.preventDefault();
+        });
+      }
+
+      var modale = document.getElementById('gioco-modale');
+      var link = document.querySelectorAll('.gioco-download a[data-statsrv-ignore]');
+      // Senza <dialog> i download restano link normali: meglio nessuna
+      // finestra che una finestra che blocca il file.
+      if (!modale || typeof modale.showModal !== 'function' || !link.length) return;
+
+      var prosegui = document.getElementById('gioco-modale-prosegui');
+      var dona = document.getElementById('gioco-modale-dona');
+      var scarica = document.getElementById('gioco-modale-scarica');
+      var prima = document.getElementById('gioco-modale-prima');
+      var dopo = document.getElementById('gioco-modale-dopo');
+      var nota = document.getElementById('gioco-modale-nota');
+      var notaIniziale = nota.textContent;
+      var nomeFile = document.getElementById('gioco-modale-nome');
+      var pesoFile = document.getElementById('gioco-modale-peso');
+      var atteso = null;
+
+      // Si chiede a ogni download, come fa itch.io. Una versione precedente
+      // chiedeva una volta sola per scheda: sembrava rotta, e soprattutto
+      // una finestra che non compare non raccoglie donazioni.
+      function avvia() {
+        if (!atteso) return;
+        var url = atteso;
+        atteso = null;
+        window.location.href = url;
+      }
+
+      link.forEach(function (a) {
+        a.addEventListener('click', function (ev) {
+          if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button !== 0) return;
+          ev.preventDefault();
+          atteso = a.href;
+          var riga = a.closest('.gioco-versione');
+          var nome = riga && riga.querySelector('.gioco-versione-testo b');
+          var peso = riga && riga.querySelector('.gioco-peso');
+          nomeFile.textContent = nome ? nome.textContent.trim() : a.href.split('/').pop();
+          pesoFile.textContent = peso ? peso.textContent.trim() : '';
+          prima.hidden = false;          // il riquadro riparte sempre da capo
+          dopo.hidden = true;
+          nota.textContent = notaIniziale;
+          modale.showModal();
+        });
+      });
+
+      prosegui.addEventListener('click', function () { modale.close(); avvia(); });
+      scarica.addEventListener('click', function () { modale.close(); avvia(); });
+
+      // Donazione: prima si paga, poi si scarica. Il file NON parte insieme
+      // alla finestrella di PayPal, che e' quello che faceva sembrare la cosa
+      // sbagliata. Il riquadro resta aperto e passa al secondo stato: il
+      // download parte da solo quando PayPal si chiude, o col pulsante, cosi'
+      // nessuno resta a mani vuote se lascia la finestrella aperta.
+      dona.addEventListener('click', function (ev) {
+        if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button !== 0) return;
+        var pop = apriPaypal(dona.href);
+        if (pop) ev.preventDefault();
+
+        prima.hidden = true;
+        dopo.hidden = false;
+        nota.textContent = pop
+          ? 'Thank you for supporting the project.'
+          : 'PayPal opened in another tab. Finish there, then come back here for the download.';
+        scarica.focus();
+
+        if (!pop) return;
+        var spia = setInterval(function () {
+          var finita = pop.closed;
+          if (!finita) {
+            // "Annulla e torna al sito" riporta la finestrella sul nostro
+            // sito invece di chiuderla: finche' e' su paypal.com leggere il
+            // suo indirizzo da errore, quando torna da noi riesce. E' il
+            // segnale che l'utente ha finito: la chiudiamo noi.
+            try {
+              if (pop.location.hostname === window.location.hostname) {
+                pop.close();
+                finita = true;
+              }
+            } catch (e) { /* ancora su PayPal: si aspetta */ }
+          }
+          if (!finita) return;
+          clearInterval(spia);
+          if (modale.open) { modale.close(); avvia(); }
+        }, 500);
+      });
+
+      // Chiusa con Esc o con la X: nessun download, lo rilancia il pulsante.
+      modale.addEventListener('close', function () { if (modale.returnValue === 'annulla') atteso = null; });
+    })();
+  </script>
 {% endif %}
