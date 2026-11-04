@@ -124,9 +124,9 @@
 
   <script>
     (function () {
-      // PayPal si apre in una finestrella sopra la pagina, come il suo
-      // pulsante ufficiale: chi dona non perde di vista il gioco. Se il
-      // browser blocca le finestrelle, il link si comporta da link normale.
+      /* PayPal si apre in una finestrella sopra la pagina, come il suo 
+         pulsante ufficiale: chi dona non perde di vista il gioco. Se il 
+         browser blocca le finestrelle, il link si comporta da link normale. */
       function apriPaypal(url) {
         var w = 500, h = 760;
         var x = window.screenX + Math.max(0, (window.outerWidth - w) / 2);
@@ -138,7 +138,7 @@
         return pop;
       }
 
-      // Il pulsante sempre visibile sotto i download.
+      /* Il pulsante sempre visibile sotto i download. */
       var fisso = document.querySelector('.gioco-dona a');
       if (fisso) {
         fisso.addEventListener('click', function (ev) {
@@ -149,8 +149,8 @@
 
       var modale = document.getElementById('gioco-modale');
       var link = document.querySelectorAll('.gioco-download a[data-statsrv-ignore]');
-      // Senza <dialog> i download restano link normali: meglio nessuna
-      // finestra che una finestra che blocca il file.
+      /* Senza <dialog> i download restano link normali: meglio nessuna 
+         finestra che una finestra che blocca il file. */
       if (!modale || typeof modale.showModal !== 'function' || !link.length) return;
 
       var prosegui = document.getElementById('gioco-modale-prosegui');
@@ -164,9 +164,9 @@
       var pesoFile = document.getElementById('gioco-modale-peso');
       var atteso = null;
 
-      // Si chiede a ogni download, come fa itch.io. Una versione precedente
-      // chiedeva una volta sola per scheda: sembrava rotta, e soprattutto
-      // una finestra che non compare non raccoglie donazioni.
+      /* Si chiede a ogni download, come fa itch.io. Una versione precedente 
+         chiedeva una volta sola per scheda: sembrava rotta, e soprattutto 
+         una finestra che non compare non raccoglie donazioni. */
       function avvia() {
         if (!atteso) return;
         var url = atteso;
@@ -184,7 +184,7 @@
           var peso = riga && riga.querySelector('.gioco-peso');
           nomeFile.textContent = nome ? nome.textContent.trim() : a.href.split('/').pop();
           pesoFile.textContent = peso ? peso.textContent.trim() : '';
-          prima.hidden = false;          // il riquadro riparte sempre da capo
+          prima.hidden = false;          /* il riquadro riparte sempre da capo */
           dopo.hidden = true;
           nota.textContent = notaIniziale;
           modale.showModal();
@@ -194,11 +194,11 @@
       prosegui.addEventListener('click', function () { modale.close(); avvia(); });
       scarica.addEventListener('click', function () { modale.close(); avvia(); });
 
-      // Donazione: prima si paga, poi si scarica. Il file NON parte insieme
-      // alla finestrella di PayPal, che e' quello che faceva sembrare la cosa
-      // sbagliata. Il riquadro resta aperto e passa al secondo stato: il
-      // download parte da solo quando PayPal si chiude, o col pulsante, cosi'
-      // nessuno resta a mani vuote se lascia la finestrella aperta.
+      /* Donazione: prima si paga, poi si scarica. Il file NON parte insieme 
+         alla finestrella di PayPal, che e' quello che faceva sembrare la cosa 
+         sbagliata. Il riquadro resta aperto e passa al secondo stato: il 
+         download parte da solo quando PayPal si chiude, o col pulsante, cosi' 
+         nessuno resta a mani vuote se lascia la finestrella aperta. */
       dona.addEventListener('click', function (ev) {
         if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button !== 0) return;
         var pop = apriPaypal(dona.href);
@@ -215,10 +215,10 @@
         var spia = setInterval(function () {
           var finita = pop.closed;
           if (!finita) {
-            // "Annulla e torna al sito" riporta la finestrella sul nostro
-            // sito invece di chiuderla: finche' e' su paypal.com leggere il
-            // suo indirizzo da errore, quando torna da noi riesce. E' il
-            // segnale che l'utente ha finito: la chiudiamo noi.
+            /* "Annulla e torna al sito" riporta la finestrella sul nostro 
+               sito invece di chiuderla: finche' e' su paypal.com leggere il 
+               suo indirizzo da errore, quando torna da noi riesce. E' il 
+               segnale che l'utente ha finito: la chiudiamo noi. */
             try {
               if (pop.location.hostname === window.location.hostname) {
                 pop.close();
@@ -232,7 +232,7 @@
         }, 500);
       });
 
-      // Chiusa con Esc o con la X: nessun download, lo rilancia il pulsante.
+      /* Chiusa con Esc o con la X: nessun download, lo rilancia il pulsante. */
       modale.addEventListener('close', function () { if (modale.returnValue === 'annulla') atteso = null; });
     })();
   </script>
