@@ -58,6 +58,7 @@ speciale...
 | `titolo` | sì | Titolo dell'articolo. Non ripetere il solo nome del gioco: dica anche *perché* vale la pena leggerlo. |
 | `sommario` | sì | Due righe sotto il titolo, e testo che compare quando il link viene condiviso. |
 | `copertina` | no | Nome di una cattura già pubblicata in `assets/img/giochi/<slug>/`. Senza, si usa la prima. |
+| `copertina_alt` | no | Che cosa si vede nella copertina, per chi non vede l'immagine. Senza, lo script avvisa e ripiega sul titolo, che è una descrizione debole. |
 | `tag` | no | Tag aggiuntivi. Quelli fissi li mette lo script. |
 | `crediti` | sì | Riga finale in corsivo: autori originali, anno, editore, e che si tratta di un omaggio amatoriale. |
 
@@ -172,6 +173,26 @@ pagina del gioco e il changelog.
 
 ## Quando l'articolo cambia
 
-Lo script riscrive il post solo se `article.md` è cambiato. La data resta
-quella della prima pubblicazione, così l'articolo non risale in cima alla
-home a ogni correzione di versione.
+Lo script riscrive il post solo se il risultato è diverso da quello che c'è
+già, cioè in pratica solo se `article.md` è cambiato. La data resta quella
+della prima pubblicazione — la legge dal post esistente, non dalla release —
+così l'articolo non risale in cima alla home a ogni correzione di versione, e
+l'indirizzo non cambia.
+
+Il post generato porta in testa una riga che lo dice:
+
+```
+# scritto da sync-giochi.py da article.md: le modifiche si fanno li'
+```
+
+Un post che **non** ha quella riga è stato scritto a mano, e lo script si
+rifiuta di sovrascriverlo: lo segnala e passa avanti. Per sostituirlo con
+quello che dice `article.md` serve dirlo esplicitamente:
+
+```
+python tools/sync-giochi.py --scrivi --riscrivi-articoli
+```
+
+Vale una volta sola per ogni gioco: i quattro articoli oggi pubblicati sono
+scritti a mano, quindi la prima volta il loro testo va prima portato dentro
+`article.md`, altrimenti si perde quello che non ci sta.
