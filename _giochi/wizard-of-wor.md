@@ -87,16 +87,9 @@ The original 6502 code is statically recompiled into native 68000 code. It is tr
 
 **A stock A500 with 1 MB** has its own floppy: the same SID sounds, from the same reSID renders, made smaller (490 KB instead of 1.8 MB). Each sound plays at the lowest rate that keeps its spectrum, and the repeated steps of an effect are stored once and played again as the original engine does. No voice and no menu; no unpacking.
 
-## Downloads
+## Installation
 
-| File | Size | What it is |
-|---|---|---|
-| `WizardOfWor_v1.2.1.lha` | 824 KB | **SID version, WHDLoad pack**: the game with the SID's sound effects and music |
-| `WizardOfWor_MagicVoice_v1.2.1.lha` | 1.2 MB | **Magic Voice version, WHDLoad pack**: the SID plus the voice of the Magic Voice module (1984), emulated |
-| `WizardOfWor_Voice2026_v1.2.1.lha` | 1.6 MB | **Voice 2026 version, WHDLoad pack**: the SID plus the same phrases with a modern voice, laugh and dungeon echo |
-| `WizardOfWor_Amiga_ADF_v1.2.1_2026-10-25.zip` | 2.3 MB | **Floppies**: three disks for the three versions (with a menu and an installer) and one disk for a stock A500 with 1 MB, the readme files |
-
-**Installation.** Floppies: boot disk 1 and choose the version in the AmigaDOS window (1 SID, 2 Magic Voice, 3 Voice 2026; RETURN alone is 1); for versions 2 and 3 AmigaDOS asks for the voice disk. On a 7 MHz A500 loading and unpacking take a minute or two, much less with an accelerator. The installer is on disk 2: double-click its Install icon (Workbench 1.3 or later). It creates the icons "Wizard of Wor SID", "Magic Voice", "Voice 2026" and "menu", which start the game straight from AmigaDOS, without WHDLoad. For the hard disk, unpack a .lha pack anywhere and double-click its icon, or from the Shell: `WHDLoad WizardOfWor.slave`, `WHDLoad WizardOfWor_MV.slave` or `WHDLoad WizardOfWor_V26.slave`. WHDLoad itself is not included (whdload.de).
+Floppies: boot disk 1 and choose the version in the AmigaDOS window (1 SID, 2 Magic Voice, 3 Voice 2026; RETURN alone is 1); for versions 2 and 3 AmigaDOS asks for the voice disk. On a 7 MHz A500 loading and unpacking take a minute or two, much less with an accelerator. The installer is on disk 2: double-click its Install icon (Workbench 1.3 or later). It creates the icons "Wizard of Wor SID", "Magic Voice", "Voice 2026" and "menu", which start the game straight from AmigaDOS, without WHDLoad. For the hard disk, unpack a .lha pack anywhere and double-click its icon, or from the Shell: `WHDLoad WizardOfWor.slave`, `WHDLoad WizardOfWor_MV.slave` or `WHDLoad WizardOfWor_V26.slave`. WHDLoad itself is not included (whdload.de).
 
 ## Requirements
 
@@ -125,10 +118,6 @@ Joystick in port 2 for the yellow Worrior: fire on the title for a one-player ga
 | ESC or F10 | Quit |
 
 The rest of the Amiga keyboard acts as the C64's.
-
-## Support
-
-The game is free. If you enjoyed it, a donation helps bring more C64 classics to the Amiga.
 
 ---
 

@@ -9,7 +9,9 @@ Cosa fa, per ogni gioco elencato in GIOCHI:
 
   1. legge l'ultima release del repo (anche privato) con `gh`;
   2. scarica gli allegati nella cartella dei file di statsrv, da dove verranno
-     caricati su bonomo.cloud;
+     caricati su bonomo.cloud; sono i file elencati nel blocco downloads di
+     game.md, non tutti quelli della release: le build PC le installa e le
+     aggiorna il launcher Reforge Arcade, quindi dal sito non si scaricano;
   3. scarica le schermate da promo/ dentro assets/img/giochi/<slug>/;
   4. riscrive la parte GENERATA del front matter di _giochi/<slug>.md:
      versione, data, elenco dei download e changelog;
@@ -44,6 +46,7 @@ GIOCHI = {
     "wizard-of-wor": "korb3n70/wow-amiga-port",
     "forbidden-forest": "korb3n70/forbidden-forest-amiga",
     "rocketball": "korb3n70/rollerball-amiga",
+    "space-taxi": "korb3n70/spacetaxi",
 }
 
 BLOG = Path(__file__).resolve().parent.parent
@@ -281,10 +284,11 @@ def release_completa(repo, tag):
     )
 
 
-def scarica_allegati(repo, tag, assets, dest, scrivi):
+def scarica_allegati(repo, tag, assets, dest, scrivi, pubblicati=None):
     """Scarica gli allegati mancanti e toglie quelli di versioni superate."""
     cambi = []
     assets = [a for a in assets if a["name"] not in ALLEGATI_MD]
+    assets = [a for a in assets if pubblicati is None or a["name"] in pubblicati]
     attesi = {a["name"] for a in assets}
 
     if scrivi:
@@ -361,6 +365,10 @@ def front_matter_generato(slug, repo, rel, tutte, schermate, pagina):
     if pagina:
         fm_pagina = pagina[0]
         etichette = etichette_da_pagina(fm_pagina)
+        # Comanda game.md: un allegato che non elenca non e' un download del
+        # sito. Cosi' le build PC, che il launcher installa e aggiorna da se',
+        # restano fuori senza doverle riconoscere dal nome del file.
+        assets = [a for a in assets if a["name"] in etichette]
         for chiave, blocco in blocchi_yaml(fm_pagina):
             if chiave in CAMPI_SCARTATI:
                 continue
@@ -595,23 +603,27 @@ def main():
         print(f"  ultima: {rel['tagName']} del {rel['publishedAt'][:10]}")
 
         complete = [release_completa(repo, r["tagName"]) for r in tutte[:CHANGELOG_MAX]]
-
-        cambi = scarica_allegati(repo, rel["tagName"], rel["assets"],
-                                 STATSRV_FILES / slug, args.scrivi)
-        c2, schermate = scarica_schermate(repo, slug, args.scrivi)
-        cambi += c2
+        cambi_pagina = []
 
         pagina = allegato_md(repo, rel["tagName"], rel["assets"], PAGINA)
+        pubblicati = None
         if pagina:
             print(f"  pagina dal repo: {PAGINA} (inglese)")
+            pubblicati = set(etichette_da_pagina(pagina[0]))
             nei_file = {a["name"] for a in rel["assets"] if a["name"] not in ALLEGATI_MD}
-            nella_pagina = set(etichette_da_pagina(pagina[0]))
-            for f in sorted(nella_pagina - nei_file):
-                cambi.append(f"  ! {f}: in {PAGINA} ma non allegato alla release")
-            for f in sorted(nei_file - nella_pagina):
-                cambi.append(f"  ! {f}: allegato alla release ma assente da {PAGINA}")
+            for f in sorted(pubblicati - nei_file):
+                cambi_pagina.append(f"  ! {f}: in {PAGINA} ma non allegato alla release")
+            for f in sorted(nei_file - pubblicati):
+                cambi_pagina.append(f"  - {f}: allegato alla release, non pubblicato"
+                                    f" (non e' in {PAGINA})")
         else:
             print(f"  nessun {PAGINA} nella release: pagina come prima")
+
+        cambi = scarica_allegati(repo, rel["tagName"], rel["assets"],
+                                 STATSRV_FILES / slug, args.scrivi, pubblicati)
+        cambi = cambi_pagina + cambi
+        c2, schermate = scarica_schermate(repo, slug, args.scrivi)
+        cambi += c2
 
         riga = aggiorna_file(slug, repo, rel, complete, schermate, pagina, args.scrivi)
         if riga:

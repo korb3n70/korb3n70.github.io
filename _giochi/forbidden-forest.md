@@ -155,16 +155,9 @@ Paul Norman squeezed a whole cinematic world into 64 KB. This port stems from th
 
 If you love the classics, or if you remember being scared by a forest on your C64, this version will take you straight back to 1983, with a modern edge.
 
-## Downloads
+## Installation
 
-| File | Size | What it is |
-|---|---|---|
-| `ForbiddenForest_v1.2.3.lha` | 112 KB | **Purist edition (A500), WHDLoad pack**: the original C64 graphics and gameplay, the SID voices on Paula; a stock A500 with 1 MB |
-| `ForbiddenForestFast_v1.2.3.lha` | 114 KB | **Purist edition for fast Amigas, WHDLoad pack**: the original game with the sound mixed at 28 kHz; WHDLoad, or the DOS icon without WHDLoad |
-| `ForbiddenForestRemake_v1.2.3.lha` | 166 KB | **Remake, WHDLoad pack**: new graphics, a living sky, three planes of parallax; fast Amigas (68030 or better, PiStorm); WHDLoad, or the DOS icon without WHDLoad |
-| `ForbiddenForest_Amiga_ADF_v1.2.3_2026-10-26.zip` | 453 KB | **Floppies**: one bootable ADF per edition, one disk with both fast editions and an installer (ForbiddenForest_FastAmigas.adf), the readme files |
-
-**Installation.** Each ADF boots its own edition. For fast Amigas, `ForbiddenForest_FastAmigas.adf` holds both fast editions: from the floppy a menu (1 Fast, 2 Remake, 3 install on the hard disk); from the Workbench its Install icon puts them on the hard disk, with icons that start the game straight from AmigaDOS, without WHDLoad. For the hard disk, unpack a .lha pack anywhere and double-click its icon, or from the Shell: `WHDLoad ForbiddenForest.slave`, `WHDLoad ForbiddenForestFast.slave` or `WHDLoad ForbiddenForestRemake.slave`. The fast packs also carry a DOS icon that starts the game without WHDLoad (on a PiStorm WHDLoad slows the fast editions down).
+Each ADF boots its own edition. For fast Amigas, `ForbiddenForest_FastAmigas.adf` holds both fast editions: from the floppy a menu (1 Fast, 2 Remake, 3 install on the hard disk); from the Workbench its Install icon puts them on the hard disk, with icons that start the game straight from AmigaDOS, without WHDLoad. For the hard disk, unpack a .lha pack anywhere and double-click its icon, or from the Shell: `WHDLoad ForbiddenForest.slave`, `WHDLoad ForbiddenForestFast.slave` or `WHDLoad ForbiddenForestRemake.slave`. The fast packs also carry a DOS icon that starts the game without WHDLoad (on a PiStorm WHDLoad slows the fast editions down).
 
 ## Requirements
 
@@ -189,14 +182,6 @@ Joystick in port 2, or the cursor keys with SPACE or CTRL to fire.
 | F2 / F4 | Volume down / up |
 | BACKSPACE | RUN/STOP |
 | ESC or F10 | Quit (with WHDLoad: back to the Workbench) |
-
-## Support the Project
-
-Creating this kind of port requires countless hours of reverse engineering, recompilation, hardware testing, and a genuine passion for preserving retrogaming history.
-
-If you enjoy the game and would like to support the development of this and future retrocomputing projects, please consider making a small donation. Even a tiny contribution helps cover resource costs and keeps the drive alive for future releases!
-
-Thank you so much for your support, and... watch out for the spiders in the forest!
 
 ---
 

@@ -279,15 +279,9 @@ The remake is made for fast Amigas. A stock A1200 (2 MB chip, no fast memory) ca
 - On a real Amiga with a PiStorm.
 - In WinUAE: the original on an A500 (68000) and on a 68030, the remake on a 68030; from AmigaDOS and with WHDLoad.
 
-## Downloads
+## Installation
 
-| File | Size | What it is |
-|---|---|---|
-| `Rocketball_v2.0.lha` | 723 KB | **Original edition, WHDLoad pack**: the C64 game for a stock A500 (rb_a500, 68000) and for a 68020 or better (rb); WHDLoad, or the DOS icon without WHDLoad |
-| `Rocketball_Remake_v2.0.lha` | 1.3 MB | **Remake, WHDLoad pack**: new graphics, an announcer, the bikes and new rules, for fast Amigas; WHDLoad, or the DOS icon without WHDLoad |
-| `Rocketball_Amiga_ADF_v2.0_2026-10-30.zip` | 306 KB | **Original edition, floppy**: a bootable ADF (a menu: 1 the A500 version, 2 the 68020 one, and an installer) with the readme files |
-
-**Installation.** The ADF holds the original edition and boots into a menu: 1 the A500 version, 2 the 68020 one. From the Workbench, its Install icon puts it on the hard disk. The remake (1.3 MB) does not fit a floppy: hard disk only. For the hard disk, unpack a .lha pack anywhere: its DOS icon starts the game straight from AmigaDOS, with no WHDLoad needed (on a 68000 it starts the A500 version). With WHDLoad (17 or later), from the Shell: `WHDLoad Rocketball.slave` (68020), `WHDLoad RocketballA500.slave` (A500) or `WHDLoad RocketballRemake.slave`.
+The ADF holds the original edition and boots into a menu: 1 the A500 version, 2 the 68020 one. From the Workbench, its Install icon puts it on the hard disk. The remake (1.3 MB) does not fit a floppy: hard disk only. For the hard disk, unpack a .lha pack anywhere: its DOS icon starts the game straight from AmigaDOS, with no WHDLoad needed (on a 68000 it starts the A500 version). With WHDLoad (17 or later), from the Shell: `WHDLoad Rocketball.slave` (68020), `WHDLoad RocketballA500.slave` (A500) or `WHDLoad RocketballRemake.slave`.
 
 Updating from 1.x: replace everything (the WHDLoad drawer, the .lha pack, the floppy). The 1.x port stays available on GitHub.
 
@@ -320,10 +314,6 @@ The full controls, the options one by one and some advice on play are in the man
 ## Feedback
 
 Please report what you find: every report helps.
-
-## Support
-
-The game is free. If you enjoyed it, a donation helps bring more C64 classics to the Amiga.
 
 ## Credits
 
