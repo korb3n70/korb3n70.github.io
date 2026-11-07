@@ -24,6 +24,10 @@ schermate:
   - file: /assets/img/giochi/space-taxi/space_taxi_2_reforge_menu.png
   - file: /assets/img/giochi/space-taxi/space_taxi_3_shift_start.png
   - file: /assets/img/giochi/space-taxi/space_taxi_4_play.png
+  - file: /assets/img/giochi/space-taxi/space_taxi_5_lasers.png
+  - file: /assets/img/giochi/space-taxi/space_taxi_6_duel.png
+  - file: /assets/img/giochi/space-taxi/space_taxi_7_taxi_pong.png
+  - file: /assets/img/giochi/space-taxi/space_taxi_8_black_hole.png
 download:
   - nome: "Amiga: the original edition, WHDLoad pack"
     file: "SpaceTaxiFast_v1.0.2.lha"
