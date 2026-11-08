@@ -95,6 +95,14 @@ ALLEGATI_MD = {PAGINA, ARTICOLO}
 CATEGORIE = "[Giochi, Amiga]"
 TAG_FISSI = ["amiga", "c64", "reforge", "retrogaming"]
 
+# L'invito alla donazione in coda all'articolo. Vale per chi non scrive il
+# campo `dona` in article.md: un gioco che ha qualcosa di suo da dire lo dice
+# li', invece di accontentarsi di questo.
+DONA_PREDEFINITO = """Una conversione come questa nasce da molte ore di ingegneria inversa,
+ricompilazione e prove sull'hardware vero. Se il gioco ti è piaciuto e
+vuoi sostenere i prossimi progetti, pensa a una piccola donazione: anche
+un contributo minimo aiuta a coprire i costi."""
+
 # L'ora nella data del post. Conta solo perche' Jekyll ordina a parita' di
 # giorno; il fuso e' quello in cui il blog e' scritto.
 ORA_POST = "09:00:00 +0100"
@@ -239,7 +247,13 @@ def campi_md(fm):
         if resto in (">", ">-", "|", "|-", ""):
             testo = [r.strip() for r in seguito]
             if resto.startswith("|"):
-                out[chiave] = "\n".join(testo)
+                # Nel blocco letterale le righe vuote sono il testo, non
+                # spaziatura: separano i paragrafi. Qui si tengono, altrimenti
+                # tre paragrafi arrivano al Markdown come uno solo.
+                vive = [r.strip() for r in righe[1:]]
+                while vive and not vive[-1]:
+                    vive.pop()
+                out[chiave] = "\n".join(vive)
             elif all(r.startswith("- ") for r in testo) and testo:
                 out[chiave] = [r[2:].strip().strip('"\'') for r in testo]
             else:
@@ -275,6 +289,16 @@ def releases(repo):
         "--json", "tagName,name,publishedAt,isDraft,isPrerelease",
     )
     return [r for r in dati if not r["isDraft"]]
+
+
+def tag_pubblicata(repo):
+    """Il tag che GitHub segna come Latest. Non e' sempre la release piu'
+    recente: una build PC pubblicata dopo resta fuori dal sito proprio
+    perche' non e' marcata Latest, e il sito deve seguire quella scelta."""
+    try:
+        return gh_json("api", f"repos/{repo}/releases/latest")["tag_name"]
+    except SystemExit:
+        return None
 
 
 def release_completa(repo, tag):
@@ -544,17 +568,23 @@ def aggiorna_articolo(slug, titolo_gioco, rel, articolo, schermate, scrivi, risc
         testa += ["image:", f"  path: {copertina}", f"  alt: {yaml_testo(alt)}"]
     testa += [MARCATORE_ARTICOLO, "---"]
 
+    # Riquadro del download e invito alla donazione: la formula qui sotto va
+    # bene per quasi tutti, ma un gioco che ha tre edizioni con voci diverse
+    # merita di dirlo. Chi vuole la sua la scrive in article.md; chi non la
+    # mette tiene questa.
+    scarica = campi.get("scarica") or (
+        "dischetto avviabile e pacchetti WHDLoad, con versione e peso di ogni file."
+    )
+    dona = campi.get("dona") or DONA_PREDEFINITO
+
     coda = [
         f"> **Lo scarichi** dalla [pagina di {titolo_gioco}](/giochi/{slug}/):",
-        "> dischetto avviabile e pacchetti WHDLoad, con versione e peso di ogni file.",
+        *[f"> {r}" for r in scarica.strip().splitlines()],
         "{: .prompt-info }",
         "",
         "## Sostieni il progetto",
         "",
-        "Una conversione come questa nasce da molte ore di ingegneria inversa,",
-        "ricompilazione e prove sull'hardware vero. Se il gioco ti è piaciuto e",
-        "vuoi sostenere i prossimi progetti, pensa a una piccola donazione: anche",
-        "un contributo minimo aiuta a coprire i costi.",
+        dona.strip(),
         "",
         "{% include dona.html %}",
         "",
@@ -599,8 +629,13 @@ def main():
             print("  nessuna release pubblicata, salto")
             continue
 
-        rel = release_completa(repo, tutte[0]["tagName"])
+        latest = tag_pubblicata(repo)
+        scelto = latest if any(r["tagName"] == latest for r in tutte) else tutte[0]["tagName"]
+        rel = release_completa(repo, scelto)
         print(f"  ultima: {rel['tagName']} del {rel['publishedAt'][:10]}")
+        if scelto != tutte[0]["tagName"]:
+            print(f"  (su GitHub e' la Latest; {tutte[0]['tagName']} e' piu' recente"
+                  f" ma non e' marcata Latest)")
 
         complete = [release_completa(repo, r["tagName"]) for r in tutte[:CHANGELOG_MAX]]
         cambi_pagina = []

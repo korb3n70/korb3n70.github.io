@@ -3,16 +3,18 @@ order: 1
 
 # >>> da qui in giu' scrive sync-giochi.py: non modificare a mano
 title: "Wizard of Wor"
-piattaforma: "Amiga"
+piattaforma: "Amiga, PC"
 originale: "Commodore 64 cartridge, Commodore, 1983 (arcade: Midway, 1981)"
 anno_originale: 1983
 sommario: >-
-  The Commodore 64 cartridge of Midway's arcade maze shooter, recompiled for the Amiga, in three
-  versions: the SID sound, the voice of the 1984 Magic Voice module, and a new voice made in 2026.
+  The Commodore 64 cartridge of Midway's arcade maze shooter, recompiled for the Amiga and for the
+  PC, in three versions: the SID sound, the voice of the 1984 Magic Voice module, and a new voice
+  made in 2026.
 requisiti: >-
   Kickstart 1.3 or later, OCS / ECS / AGA, 512 KB chip RAM plus memory for the sounds: SID
   512 KB chip + 3 MB, Magic Voice + 5 MB, Voice 2026 + 7 MB (WHDLoad: 4 / 8 / 8 MB fast). A stock
-  A500 with 1 MB: its own floppy, with the SID sound.
+  A500 with 1 MB: its own floppy, with the SID sound. PC: Windows 10 or 11, 64-bit, through the
+  Reforge Arcade launcher.
 release_url: "https://github.com/korb3n70/wow-amiga-port/releases/tag/v1.2.1"
 versione: "1.2.1"
 data_versione: 2026-10-25
@@ -40,6 +42,12 @@ download:
     dimensione: "824 KB"
     descrizione: "the game with the SID's sound effects and music"
 changelog:
+  - versione: "pc-v1.3"
+    data: 2026-11-08
+    note: |
+      The first PC build (Windows 10/11, 64-bit): the original C64 game, and the Magic Voice and Voice 2026 editions. Two players on one PC: player 1 the cursor keys + SPACE or the 1st gamepad, player 2 W A S D + left SHIFT or the 2nd gamepad.
+
+      Installed and updated by the Reforge Arcade launcher: https://www.bonomo.cloud/launcher/ (this zip is the same package). Not code-signed: Windows warns the first time.
   - versione: "1.2.1"
     data: 2026-10-25
     note: |
@@ -77,6 +85,14 @@ This project brings the C64 cartridge to the Amiga, in three versions chosen at 
 ## The C64 Game, Recompiled
 
 The original 6502 code is statically recompiled into native 68000 code. It is translated, not emulated: the Amiga runs the cartridge's own program, with the same mazes, the same monsters and the same timing. A lockstep test runs the recompiled code side by side with a reference C64 and compares them frame by frame.
+
+## On the PC
+
+The PC build comes through **Reforge Arcade**, the launcher that installs the games and keeps them up to date: [www.bonomo.cloud/launcher](https://www.bonomo.cloud/launcher/). It has the same three versions: **C64**, **Magic Voice** and **Voice 2026**.
+
+The PC program is made with **reforge**, a newer tool: the cartridge's 6502 code translated into portable C and checked against the C64, built for Windows on SDL3. In the C64 version the SID is emulated while the game plays; the Magic Voice and Voice 2026 versions play the same sounds and voices as the Amiga's.
+
+Two players on one PC: the yellow Worrior with the cursor keys and SPACE or the first gamepad, the blue one with W A S D and the left SHIFT or the second gamepad. The program is not code-signed, so Windows warns about it the first time.
 
 ## The Sound and the Voices
 
@@ -121,4 +137,4 @@ The rest of the Amiga keyboard acts as the C64's.
 
 ---
 
-*Wizard of Wor: arcade by Midway, 1981; Commodore 64 cartridge by Commodore, 1983; Magic Voice speech module, 1984. Amiga conversion: Massimo Bonomo, 2026. This is a fan tribute; Wizard of Wor is © its rights holders.*
+*Wizard of Wor: arcade by Midway, 1981; Commodore 64 cartridge by Commodore, 1983; Magic Voice speech module, 1984. Amiga and PC conversion: Massimo Bonomo, 2026. This is a fan tribute; Wizard of Wor is © its rights holders.*

@@ -1,12 +1,13 @@
 ---
-title: "Wizard of Wor su Amiga: il porting definitivo della versione Commodore 64"
+title: "Wizard of Wor su Amiga e PC: il porting definitivo della versione Commodore 64"
 date: 2026-11-04 09:00:00 +0100
 categories: [Giochi, Amiga]
 tags: [amiga, c64, wizard-of-wor, reforge, retrogaming, magic-voice, porting]
-description: Perché la versione C64 batte il cabinato arcade, e come è arrivata su Amiga con la voce del Magic Voice ricostruita per ingegneria inversa.
+description: "Perché la versione C64 batte il cabinato arcade, e come è arrivata su Amiga e ora anche sul PC, con la voce del Magic Voice ricostruita per ingegneria inversa."
 image:
   path: /assets/img/giochi/wizard-of-wor/wizard_of_wor_amiga_3_dungeon.png
-  alt: Wizard of Wor su Amiga, il labirinto con i mostri e il radar
+  alt: "Il labirinto del C64 in blu su fondo nero: mostri blu fra i corridoi, il Worrior giallo che spara, in basso il riquadro RADAR fra i punteggi 200 e 0."
+# scritto da sync-giochi.py da article.md: le modifiche si fanno li'
 ---
 
 Quando si parla di leggende dell'arcade, **Wizard of Wor** occupa un posto speciale nel cuore di ogni retrogamer. Ma qual è davvero la versione migliore? In molti tendono a idolatrare il cabinato originale, che però — a guardarlo con occhio critico — soffre di una certa confusione visiva: colori disomogenei, fondali incoerenti e quelle stelle sullo sfondo che, diciamolo, sono piuttosto sgradevoli.
@@ -32,13 +33,27 @@ Per riprodurre e migliorare questa caratteristica senza introdurre ritardi o cal
 ![Wizard of Wor su Amiga, la schermata del titolo](/assets/img/giochi/wizard-of-wor/wizard_of_wor_amiga_1_title_page.png)
 _La versione C64 sull'Amiga: fondo pulito e colori esattamente dove devono stare._
 
+## Anche sul PC
+
+Dall'8 novembre 2026 Wizard of Wor c'è anche per Windows, con le stesse tre edizioni dell'Amiga: **C64**, **Magic Voice** e **Voice 2026**. Si installa e si aggiorna con il [launcher Reforge Arcade](https://www.bonomo.cloud/launcher/).
+
+Non è un emulatore. Il codice 6502 della cartuccia è tradotto in C con reforge, lo strumento che uso per questi porting, e confrontato con il C64. Poi è compilato per Windows sopra SDL3, la libreria che gli dà finestra, suono e comandi. Nell'edizione C64 il SID viene emulato mentre il gioco gira. Magic Voice e Voice 2026 suonano gli stessi effetti e le stesse voci della versione Amiga, con i tempi del modulo vocale.
+
+Si gioca in due sullo stesso computer, come al bar: il Worrior giallo con le frecce e la barra spaziale o con il primo gamepad, quello blu con W, A, S, D e il tasto Shift di sinistra o con il secondo gamepad.
+
+![La tabella dei punti: Burwor 100, Garwor 200, Thorwor 500, i due Worrior 1000, il Worluk 1000 e punteggio doppio, il Wizard of Wor 2500](/assets/img/giochi/wizard-of-wor/wizard_of_wor_amiga_2_points.png)
+_La galleria dei mostri con i loro punti, come la mostra il C64 fra una partita e l'altra._
+
+Un limite da dire subito: il programma per PC non è firmato digitalmente, e Windows al primo avvio lo segnala.
+
 ## Perché proprio questa versione
 
 Se gli autori dell'epoca avessero avuto a disposizione gli strumenti e la potenza di oggi, con ogni probabilità avrebbero spinto in questa direzione. Questo porting nasce dal desiderio di consegnare la versione più divertente, rifinita e giocabile di Wizard of Wor, costruita con passione artigiana e profondo rispetto per la storia del retrocomputing.
 
-Se ami i classici e vuoi riscoprire un capolavoro liberato dai difetti visivi del cabinato, questa versione Amiga ti riporta dritto al 1982 — con un tocco moderno.
+Se ami i classici e vuoi riscoprire un capolavoro liberato dai difetti visivi del cabinato, questa versione ti riporta dritto al 1983 — con un tocco moderno.
 
-> **Lo scarichi** dalla [pagina di Wizard of Wor](/giochi/wizard-of-wor/): dischetti avviabili, pacchetti WHDLoad e le tre edizioni con le voci.
+> **Lo scarichi** dalla [pagina di Wizard of Wor](/giochi/wizard-of-wor/):
+> dischetti avviabili, pacchetti WHDLoad e le tre edizioni con le voci.
 {: .prompt-info }
 
 ## Sostieni il progetto
@@ -53,4 +68,4 @@ Grazie di cuore per il supporto e… buona esplorazione dei sotterranei di Wor!
 
 ---
 
-*Wizard of Wor: arcade Midway, 1981; cartuccia Commodore 64 di Commodore, 1983; modulo vocale Magic Voice, 1984. Conversione Amiga: Massimo Bonomo, 2026. Questo è un omaggio amatoriale; Wizard of Wor è © dei rispettivi aventi diritto.*
+*Wizard of Wor: arcade Midway, 1981; cartuccia Commodore 64 di Commodore, 1983; modulo vocale Magic Voice, 1984. Conversione Amiga e PC: Massimo Bonomo, 2026. Questo è un omaggio amatoriale; Wizard of Wor è © dei rispettivi aventi diritto.*
