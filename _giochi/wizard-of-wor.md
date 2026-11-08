@@ -88,9 +88,9 @@ The original 6502 code is statically recompiled into native 68000 code. It is tr
 
 ## On the PC
 
-The PC build comes through **Reforge Arcade**, the launcher that installs the games and keeps them up to date: [www.bonomo.cloud/launcher](https://www.bonomo.cloud/launcher/). It has the same three versions: **C64**, **Magic Voice** and **Voice 2026**.
+The PC build comes through **Reforge Arcade**, the launcher that installs the games and keeps them up to date: [www.bonomo.cloud/launcher](https://www.bonomo.cloud/launcher/). It has three versions: **C64**, **Magic Voice** and **Reforge**, the edition with the voice made in 2026 (Voice 2026 on the Amiga), which also keeps the high scores between games.
 
-The PC program is made with **reforge**, a newer tool: the cartridge's 6502 code translated into portable C and checked against the C64, built for Windows on SDL3. In the C64 version the SID is emulated while the game plays; the Magic Voice and Voice 2026 versions play the same sounds and voices as the Amiga's.
+The PC program is made with **reforge**, a newer tool: the cartridge's 6502 code translated into portable C and checked against the C64, built for Windows on SDL3. In all three versions the SID is emulated while the game plays; Magic Voice and Reforge add the same voices as the Amiga's.
 
 Two players on one PC: the yellow Worrior with the cursor keys and SPACE or the first gamepad, the blue one with W A S D and the left SHIFT or the second gamepad. The program is not code-signed, so Windows warns about it the first time.
 

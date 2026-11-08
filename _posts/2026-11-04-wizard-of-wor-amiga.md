@@ -35,9 +35,9 @@ _La versione C64 sull'Amiga: fondo pulito e colori esattamente dove devono stare
 
 ## Anche sul PC
 
-Dall'8 novembre 2026 Wizard of Wor c'è anche per Windows, con le stesse tre edizioni dell'Amiga: **C64**, **Magic Voice** e **Voice 2026**. Si installa e si aggiorna con il [launcher Reforge Arcade](https://www.bonomo.cloud/launcher/).
+Dall'8 novembre 2026 Wizard of Wor c'è anche per Windows, in tre edizioni: **C64**, **Magic Voice** e **Reforge**. Reforge è l'edizione con la voce del 2026 (sull'Amiga si chiama Voice 2026), e in più conserva i record da una partita all'altra. Si installa e si aggiorna con il [launcher Reforge Arcade](https://www.bonomo.cloud/launcher/).
 
-Non è un emulatore. Il codice 6502 della cartuccia è tradotto in C con reforge, lo strumento che uso per questi porting, e confrontato con il C64. Poi è compilato per Windows sopra SDL3, la libreria che gli dà finestra, suono e comandi. Nell'edizione C64 il SID viene emulato mentre il gioco gira. Magic Voice e Voice 2026 suonano gli stessi effetti e le stesse voci della versione Amiga, con i tempi del modulo vocale.
+Non è un emulatore. Il codice 6502 della cartuccia è tradotto in C con reforge, lo strumento che uso per questi porting, e confrontato con il C64. Poi è compilato per Windows sopra SDL3, la libreria che gli dà finestra, suono e comandi. In tutte e tre il SID viene emulato mentre il gioco gira; Magic Voice e Reforge aggiungono le stesse voci della versione Amiga, con i tempi del modulo vocale.
 
 Si gioca in due sullo stesso computer, come al bar: il Worrior giallo con le frecce e la barra spaziale o con il primo gamepad, quello blu con W, A, S, D e il tasto Shift di sinistra o con il secondo gamepad.
 
