@@ -14,9 +14,9 @@ requisiti: >-
   Amiga: a 68020 or better, 512 KB chip + 2 MB fast (SpaceTaxiFast from AmigaDOS: 1 MB),
   Kickstart 1.3 or later (WHDLoad: 2.0). PC: Windows 10 or 11, 64-bit, through the Reforge
   Arcade launcher.
-release_url: "https://github.com/korb3n70/spacetaxi/releases/tag/v1.0.2"
-versione: "1.0.2"
-data_versione: 2026-11-07
+release_url: "https://github.com/korb3n70/spacetaxi/releases/tag/v1.0.3"
+versione: "1.0.3"
+data_versione: 2026-11-10
 cartella: space-taxi
 repo: "korb3n70/spacetaxi"
 schermate:
@@ -30,18 +30,30 @@ schermate:
   - file: /assets/img/giochi/space-taxi/space_taxi_8_black_hole.png
 download:
   - nome: "Amiga: the original edition, WHDLoad pack"
-    file: "SpaceTaxiFast_v1.0.2.lha"
-    dimensione: "503 KB"
+    file: "SpaceTaxiFast_v1.0.3.lha"
+    dimensione: "508 KB"
     descrizione: "the original graphics, the music as Paula streams, the C64's own sampled voices; WHDLoad, or the DOS icon without WHDLoad"
   - nome: "Amiga: Reforge edition, WHDLoad pack"
-    file: "SpaceTaxiRemake_v1.0.2.lha"
-    dimensione: "805 KB"
+    file: "SpaceTaxiRemake_v1.0.3.lha"
+    dimensione: "809 KB"
     descrizione: "the same game with new voices (whole phrases at 28 kHz) and a title menu; WHDLoad, or the DOS icon without WHDLoad"
   - nome: "Amiga: floppies"
-    file: "SpaceTaxi_Amiga_ADF_v1.0.2_2026-11-07.zip"
-    dimensione: "942 KB"
+    file: "SpaceTaxi_Amiga_ADF_v1.0.3_2026-11-09.zip"
+    dimensione: "943 KB"
     descrizione: "one bootable ADF per edition, the readme files"
 changelog:
+  - versione: "1.0.3"
+    data: 2026-11-10
+    note: |
+      Space Taxi for the Amiga (68020 or better), 1.0.3 (2026-11-09).
+
+      - Level 17 **INTERFERENCE** and level 19 **THE SWITCH** now play as on the C64: in THE SWITCH the joystick's directions are turned round, in INTERFERENCE they are scrambled at times. In 1.0.2 both flew as an ordinary level.
+      - The music now plays at the C64's speed: in 1.0.2 and before it was about 20% slow on the Amiga.
+      - Both editions, SpaceTaxiFast and SpaceTaxiRemake, have both fixes. Nothing else changes.
+
+      Files: `SpaceTaxiFast_v1.0.3.lha` and `SpaceTaxiRemake_v1.0.3.lha` (WHDLoad and AmigaDOS), and the two bootable floppies in `SpaceTaxi_Amiga_ADF_v1.0.3_2026-11-09.zip`.
+
+      **PC (Windows), 1.0.7**, also in the Reforge Arcade launcher: `SpaceTaxi_PC_v1.0.7_win64.zip`. The same fix to INTERFERENCE and THE SWITCH; everything else as 1.0.6 (pause, volume and level keys in play only, the SID's filter and noise, the picture in time with the game).
   - versione: "1.0.2"
     data: 2026-11-07
     note: |
