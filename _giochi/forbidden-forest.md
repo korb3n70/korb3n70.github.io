@@ -116,6 +116,12 @@ older_downloads:
     bytes: 114545
     machines: []
     note: "edizione non rifatta da reforge: port 1.2.3 fatto a mano (repo forbidden-forest), non reforge"
+  - file: "ForbiddenForest_Amiga_ADF_v1.2.3_2026-10-26.zip"
+    version: "1.2.3"
+    edition: ""
+    bytes: 464102
+    machines: []
+    note: "i dischetti della 1.2.3"
 versione: "2.0"
 data_versione: 2026-11-20
 cartella: forbidden-forest
@@ -373,10 +379,15 @@ Joystick in port 2, or the cursor keys with SPACE or CTRL to fire.
 | Key | Action |
 |---|---|
 | F1 / F3 / F5 / F7 | Choose the difficulty on the title page |
-| P or HELP | Pause |
-| F2 / F4 | Volume down / up |
+| Alt+P | Pause |
+| Alt+M | Sound off / on |
+| Alt+plus / Alt+minus | Volume (music and effects together) |
+| Alt+J | Swap the joystick ports |
 | BACKSPACE | RUN/STOP |
-| ESC or F10 | Quit (with WHDLoad: back to the Workbench) |
+| Alt+Q or Esc | Quit (with WHDLoad: back to the Workbench) |
+| Alt+Return or F11 | Full screen (PC and Mac) |
+
+The A500 edition (1.2.3) keeps its own keys: P or HELP to pause, F2 / F4 for the volume, ESC or F10 to quit.
 
 ---
 
