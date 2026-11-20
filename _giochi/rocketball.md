@@ -511,7 +511,7 @@ In the remake the joystick also works the title menu: up / down choose a key, le
 | Fire alone | Dash (remake) | |
 | Fire held | Call your bike when the power bar is full (remake) | |
 
-P or HELP: pause. BACKSPACE or R: back to the title. ESC or F10: quit.
+Alt+P: pause. BACKSPACE or R: back to the title (RUN/STOP). Alt+M: sound off / on; Alt+plus / minus: volume. Alt+Q or Esc: quit.
 
 The full controls, the options one by one and some advice on play are in the manual.
 
