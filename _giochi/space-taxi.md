@@ -320,8 +320,13 @@ Joystick in port 2 (on the PC: a gamepad or the cursor keys with SPACE to fire).
 | Joystick | Fly the taxi; fire for the landing gear |
 | Title (original) | Fire to play, up for the high scores, down for the instructions |
 | Title menu (Reforge) | Up / down to choose, fire to select |
-| P or HELP | Pause |
-| ESC or F10 | Quit |
+| Alt+P | Pause |
+| Alt+M | Sound off / on |
+| Alt+plus / Alt+minus | Volume (music, effects and voices together) |
+| Alt+V | The voice off / on |
+| Alt+J | Swap the joystick ports |
+| Alt+Q or Esc | Quit |
+| Alt+Return or F11 | Full screen (PC and Mac) |
 
 ---
 

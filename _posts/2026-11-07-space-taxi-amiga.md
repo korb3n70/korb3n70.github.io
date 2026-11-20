@@ -78,9 +78,8 @@ Il ritmo è quello del Commodore, non quello del PC: ho confrontato la versione 
 del gioco originale, e la routine di gioco gira ogni due fotogrammi in tutte e due. Una partita va alla
 stessa velocità di allora, su qualsiasi computer.
 
-Si gioca con le frecce e la barra spaziale, oppure con un gamepad; P mette in pausa, e durante la
-partita F2-F8 regolano il volume degli effetti e delle voci. Si scarica e si aggiorna con il
-[launcher Reforge Arcade](/posts/reforge-arcade-pc/): per ora c'è solo la versione Windows a 64 bit.
+Si gioca con le frecce e la barra spaziale, oppure con un gamepad. Si scarica e si aggiorna con il
+[launcher Reforge Arcade](/posts/reforge-arcade-pc/): per Windows e, dalla 1.1, anche per Mac.
 
 ## Che cosa ho cambiato
 
@@ -94,8 +93,8 @@ un'edizione separata, **Reforge** (sull'Amiga si chiama Remake), uguale sulle du
 ![Il menu dell'edizione Reforge sotto la scritta SPACE TAXI: High Scores, Single Player Local, Two Players Local, Online Multiplayer coming soon in grigio, Instructions, Credits](/assets/img/giochi/space-taxi/space_taxi_2_reforge_menu.png)
 _Il menu dell'edizione Reforge. La voce del gioco online è in grigio: c'è il posto, non ancora il gioco._
 
-E sul PC c'è una cosa che sull'Amiga non c'è ancora: **Two Players Local**. Due persone sullo stesso
-computer, due taxi nella stessa schermata. Il primo giocatore usa le
+Poi c'è **Two Players Local**, nato sul PC e arrivato sull'Amiga con la 1.1. Due persone sullo stesso
+computer, due taxi nella stessa schermata. Sul PC il primo giocatore usa le
 frecce o il primo gamepad, il secondo W, A, S, D con il tasto Shift di sinistra, o il secondo gamepad.
 Nel gioco del 1984 il duello non c'era: è scritto da zero sopra il codice originale, che resta intatto.
 Alcune schermate pensate per un solo taxi, come TELEPORTS o PUZZLER, nel duello vengono saltate.
@@ -120,6 +119,22 @@ Ho scritto che il gioco è lo stesso, e fino alla versione 1.0.2 in due schermat
   lenta.
 
 Sul PC la stessa correzione a INTERFERENCE e THE SWITCH è nella versione 1.0.7.
+
+## Che cosa porta la 1.1
+
+La 1.1 non corregge: aggiunge. La cosa più grossa è il secondo taxi sull'Amiga.
+
+- **Two Players Local sull'Amiga**, nell'edizione SpaceTaxiRemake: un secondo taxi, azzurro, che si
+  pilota con un joystick nella porta del mouse; competitivo o cooperativo dopo il turno, come sul PC;
+- **gli stessi comandi su tutte le piattaforme**, con il tasto Alt: pausa, suono spento o acceso,
+  volume, scambio delle porte dei joystick, uscita. Suono spento e volume ora agiscono **anche sulla
+  musica** e sulle voci del Remake; restano memorizzati, e all'avvio la riga sotto l'immagine dice
+  MUTE oppure VOL con il suo numero;
+- un file **INSTRUCTIONS.md** in ogni pacchetto: i comandi del gioco, quelli di reforge, dove vengono
+  salvati i record, e il menu segreto;
+- se la **memoria non basta**, il gioco dice quanta ne manca e torna alla Shell, invece di bloccarsi;
+- oltre che per Windows, il gioco ora c'è anche per **Mac**, sempre attraverso il launcher Reforge
+  Arcade.
 
 ## I limiti, detti subito
 
