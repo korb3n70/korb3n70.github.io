@@ -151,6 +151,24 @@ older_downloads:
     bytes: 843461
     machines: []
     note: "edizione non rifatta da reforge: port 1.2.1 fatto a mano (repo wizard-of-wor), non reforge"
+  - file: "WizardOfWor_MagicVoice_v1.2.1.lha"
+    version: "1.2.1"
+    edition: "WizardOfWorMagicVoice"
+    bytes: 1221523
+    machines: []
+    note: "edizione non rifatta da reforge: port 1.2.1 fatto a mano (repo wizard-of-wor), non reforge"
+  - file: "WizardOfWor_Voice2026_v1.2.1.lha"
+    version: "1.2.1"
+    edition: "WizardOfWorVoice2026"
+    bytes: 1653598
+    machines: []
+    note: "edizione non rifatta da reforge: port 1.2.1 fatto a mano (repo wizard-of-wor), non reforge"
+  - file: "WizardOfWor_Amiga_ADF_v1.2.1_2026-10-25.zip"
+    version: "1.2.1"
+    edition: ""
+    bytes: 2378452
+    machines: []
+    note: "i dischetti della 1.2.1"
 versione: "2.0"
 data_versione: 2026-11-20
 cartella: wizard-of-wor
@@ -399,12 +417,17 @@ Joystick in port 2 for the yellow Worrior: fire on the title for a one-player ga
 
 | Key | Action |
 |---|---|
-| P or HELP | Pause |
-| F2 / F4 | Effects volume down / up |
-| F6 / F8 | Voice volume down / up (Magic Voice, Voice 2026) |
-| F9 | Port 1 off / on (off: the mouse does nothing) |
-| DEL | RESTORE: back to the title pages |
-| ESC or F10 | Quit |
+| Backspace | Pause (the C64's RUN/STOP); 1 or 2 resumes |
+| Alt+P | Pause |
+| Alt+M | Sound off / on |
+| Alt+plus / Alt+minus | Volume (music and effects together) |
+| Alt+V | The voice off / on (the editions with speech) |
+| Alt+J | Swap the joystick ports |
+| Alt+R | RESTORE: back to the title pages |
+| Alt+Q or Esc | Quit |
+| Alt+Return or F11 | Full screen (PC and Mac) |
+
+The 1.2.1 editions (the A500 floppy) keep their own keys: P or HELP to pause, F2 / F4 and F6 / F8 for the effects' and the voice's volume, F9 to switch port 1 off, DEL for RESTORE, ESC or F10 to quit.
 
 The rest of the Amiga keyboard acts as the C64's.
 
