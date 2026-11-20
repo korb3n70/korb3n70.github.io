@@ -14,9 +14,101 @@ requisiti: >-
   Amiga: a 68020 or better, 512 KB chip + 2 MB fast (SpaceTaxiFast from AmigaDOS: 1 MB),
   Kickstart 1.3 or later (WHDLoad: 2.0). PC: Windows 10 or 11, 64-bit, through the Reforge
   Arcade launcher.
-release_url: "https://github.com/korb3n70/spacetaxi/releases/tag/v1.0.3"
-versione: "1.0.3"
-data_versione: 2026-11-10
+release_url: "https://github.com/korb3n70/spacetaxi/releases/tag/v1.1"
+compat:
+  machines:
+    - id: "ocs_4mb"
+      name: "Amiga OCS/ECS, 4 MB"
+    - id: "ocs_8mb"
+      name: "Amiga OCS/ECS, 8 MB"
+    - id: "a1200_4mb"
+      name: "Amiga 1200, 4 MB, CPU di serie"
+    - id: "a1200_8mb"
+      name: "Amiga 1200, 8 MB, CPU di serie"
+    - id: "pistorm"
+      name: "Amiga con PiStorm"
+    - id: "thea500mini"
+      name: "THEA500 Mini"
+    - id: "thea1200"
+      name: "THEA1200"
+  editions:
+    - name: "SpaceTaxiFast"
+      cells:
+        - machine: "ocs_4mb"
+          status: "untested"
+          offer: "1.1"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "ocs_8mb"
+          status: "untested"
+          offer: "1.1"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "a1200_4mb"
+          status: "untested"
+          offer: "1.1"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "a1200_8mb"
+          status: "untested"
+          offer: "1.1"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "pistorm"
+          status: "untested"
+          offer: "1.1"
+          why: "prova a occhio su una macchina vera con difetti: l'immagine ferma all'uscita dall'intermezzo (corretta nella 1.0.4t2) e un difetto audio ancora aperto; manca la misura delle immagini al secondo"
+          note: "non provato su questa macchina"
+        - machine: "thea500mini"
+          status: "untested"
+          offer: "1.1"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "thea1200"
+          status: "untested"
+          offer: "1.1"
+          why: ""
+          note: "non provato su questa macchina"
+    - name: "SpaceTaxiRemake"
+      cells:
+        - machine: "ocs_4mb"
+          status: "untested"
+          offer: "1.1"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "ocs_8mb"
+          status: "untested"
+          offer: "1.1"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "a1200_4mb"
+          status: "untested"
+          offer: "1.1"
+          why: "misurato, ma manca la prova a occhio su questa macchina"
+          note: "non provato su questa macchina"
+        - machine: "a1200_8mb"
+          status: "untested"
+          offer: "1.1"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "pistorm"
+          status: "untested"
+          offer: "1.1"
+          why: "prova a occhio su una macchina vera con difetti: l'immagine ferma all'uscita dall'intermezzo (corretta nella 1.0.4t2) e un difetto audio ancora aperto; manca la misura delle immagini al secondo"
+          note: "non provato su questa macchina"
+        - machine: "thea500mini"
+          status: "untested"
+          offer: "1.1"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "thea1200"
+          status: "untested"
+          offer: "1.1"
+          why: ""
+          note: "non provato su questa macchina"
+older_downloads:
+versione: "1.1"
+data_versione: 2026-11-20
 cartella: space-taxi
 repo: "korb3n70/spacetaxi"
 schermate:
@@ -30,18 +122,114 @@ schermate:
   - file: /assets/img/giochi/space-taxi/space_taxi_8_black_hole.png
 download:
   - nome: "Amiga: the original edition, WHDLoad pack"
-    file: "SpaceTaxiFast_v1.0.3.lha"
-    dimensione: "508 KB"
+    file: "SpaceTaxiFast_v1.1.lha"
+    dimensione: "503 KB"
     descrizione: "the original graphics, the music as Paula streams, the C64's own sampled voices; WHDLoad, or the DOS icon without WHDLoad"
   - nome: "Amiga: Reforge edition, WHDLoad pack"
-    file: "SpaceTaxiRemake_v1.0.3.lha"
-    dimensione: "809 KB"
+    file: "SpaceTaxiRemake_v1.1.lha"
+    dimensione: "814 KB"
     descrizione: "the same game with new voices (whole phrases at 28 kHz) and a title menu; WHDLoad, or the DOS icon without WHDLoad"
   - nome: "Amiga: floppies"
-    file: "SpaceTaxi_Amiga_ADF_v1.0.3_2026-11-09.zip"
-    dimensione: "943 KB"
+    file: "SpaceTaxi_Amiga_ADF_v1.1_2026-11-20.zip"
+    dimensione: "925 KB"
     descrizione: "one bootable ADF per edition, the readme files"
 changelog:
+  - versione: "1.1"
+    data: 2026-11-20
+    note: |
+      One version for every platform: Amiga, Windows and Mac.
+
+      **New**
+
+      - **Sound off and volume on the Amiga now act on the music too** (the title tune and the tunes in play) and on the
+        Remake's samples. At the start, the line under the picture says MUTE or VOL n when `reforge.cfg` keeps them.
+      - **Amiga: Two Players Local in SpaceTaxiRemake,** the duel of the PC edition:
+        - a second taxi (cyan) flown with a joystick in the mouse port;
+        - its HUD under the picture, with P1 / P2 beside the two HUDs;
+        - after the shift, competitive or cooperative, as on the PC.
+
+        On an emulated 68030 and 68EC020 the duel keeps about 50 pictures a second.
+      - **The same commands on every platform**, with Alt (Option on a Mac):
+
+        | keys | what |
+        |---|---|
+        | Alt+P | pause |
+        | Alt+M | sound off / on |
+        | Alt+plus / minus | volume |
+        | Alt+J | swap the joystick ports |
+        | Alt+R | RESTORE |
+        | Alt+Q or Esc | quit |
+        | Alt+Return or F11 | full screen (PC and Mac) |
+
+        The volume and mute are remembered in `reforge.cfg`.
+      - **Changed keys on the PC and Mac:** the keys of 1.0.6-1.0.8 are replaced by the Alt commands above:
+        - PAUSE and P (pause);
+        - F2 / F4 / F6 / F8 (the sound levels, in flight; now the C64's shifted F-keys again);
+        - F10 (quit).
+
+        Esc still quits.
+      - **The version on screen** on Windows and Mac for 5 seconds at the start, under the picture: the game's version, and
+        beside it in small print reforge's («REFORGE 2026.11»).
+      - **Two gamepads on the PC and Mac:** a pad unplugged and plugged back keeps its player. Before, the two players could
+        be swapped until the end of the game.
+      - **INSTRUCTIONS.md** in every package (Amiga, Windows, Mac): the controls on each platform, the reforge commands,
+        where the high scores are saved, and the game's secret menu.
+
+      **Fixed**
+
+      - **Amiga, not enough memory:** the game now says how much memory it is missing and goes back to the Shell. Before, it
+        could start anyway and hang. Under WHDLoad, a slave from another release next to the program now gives a message
+        instead of crashing.
+
+      **Requirements and known limits**
+
+      - **Amiga:** a 68020 or better, for both editions.
+      - **Amiga memory,** the smallest machine of nine tried that starts and plays, with the game started straight from the
+        startup-sequence (the Workbench and other programs take memory of their own):
+
+        | edition | from AmigaDOS | from WHDLoad |
+        |---|---|---|
+        | SpaceTaxiFast | 1 MB chip RAM (an A500+ or an A600) and 1 MB fast RAM | 2 MB chip RAM (an A1200) |
+        | SpaceTaxiRemake | 1 MB chip RAM (an A500+ or an A600) and 2 MB fast RAM | the same |
+
+      - **AmiSync** users: AmiSync 0.4.0 or newer.
+      - **Windows and Mac:** not code-signed. Windows and macOS warn the first time.
+
+      **Quality assurance**
+
+      - **Automatic scenes:** both editions were driven automatically through the game's situations and compared with the
+        original running in a C64 emulator. The situations: the title, the four demos, starting a game, crashing the taxi,
+        game over, two cabbies, the secret menu. This ran on the PC/Mac program (on the Mac) and on an emulated Amiga.
+      - **Long games:** an automatic player flew long games on the emulated Amiga, with an alarm for a game that stops
+        moving.
+      - **Same game on Mac and Amiga:** a pilot flew every one of the 25 screens on the Mac, in both editions, and the Amiga
+        replayed the same moves. An alarm watched for the Amiga's game drifting from the Mac's: the taxi's positions matched
+        in every case.
+      - **Amiga memory:** the requirement above was measured on nine Amiga machine configurations, from 512 KB chip RAM to
+        2 MB chip + 8 MB fast.
+      - **By hand:** the final test build was played on a real Amiga, an Amiga 2000 with a PiStorm.
+
+      **Files:**
+      - Amiga: `SpaceTaxiFast_v1.1.lha`, `SpaceTaxiRemake_v1.1.lha`, and the bootable floppies in `SpaceTaxi_Amiga_ADF_v1.1_2026-11-20.zip`.
+      - Windows: `SpaceTaxi_PC_v1.1_win64.zip`.
+      - Mac: `SpaceTaxi_PC_v1.1_macos-universal.zip`.
+
+      The PC and Mac packages are the same ones the Reforge Arcade launcher installs:
+      https://www.bonomo.cloud/launcher/
+  - versione: "pc-v1.0.8"
+    data: 2026-11-14
+    note: |
+      Space Taxi for the PC, Windows and now the Mac (one universal package: Apple silicon and Intel, macOS 11 or later). Two buttons: C64 (the original game, with the C64's sampled voice) and Reforge. Built from reforge main 36edb59.
+
+      What's new in 1.0.8:
+      - Now on the Mac too: the same game as on Windows.
+      - C64 is now the edition with the C64's sampled voice ("Hey taxi!"): until 1.0.7 the C64 button started an edition that did not speak.
+      - Reforge: the game no longer stops for a moment at each word the voice says.
+      - The C64's colours as in VICE's Colodore palette, as in the Amiga editions.
+      - Two Players Local: taxi 2 no longer shows for a moment in taxi 1's place.
+      - The game's files are inside the program: no data folder next to it, only save/ with the high scores.
+
+      Installed and updated by the Reforge Arcade launcher: https://www.bonomo.cloud/launcher/ (these zips are the same packages). Not code-signed or notarized: Windows and macOS warn the first time.
   - versione: "1.0.3"
     data: 2026-11-10
     note: |

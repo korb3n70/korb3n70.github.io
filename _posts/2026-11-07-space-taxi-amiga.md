@@ -108,6 +108,19 @@ si può giocare; nel menu la voce c'è ma è in grigio, e il cursore la salta. I
 internet esiste già: un servizio che fa incontrare i giocatori e uno che passa i dati della partita
 dall'uno all'altro. Manca la parte dentro il gioco, quella che conta, e non ha ancora una data.
 
+## Che cosa corregge la 1.0.3
+
+Ho scritto che il gioco è lo stesso, e fino alla versione 1.0.2 in due schermate non era vero. La
+1.0.3 dell'Amiga, del 9 novembre 2026, corregge due cose:
+
+- i livelli 17, **INTERFERENCE**, e 19, **THE SWITCH**, ora si giocano come sul C64: in THE SWITCH le
+  direzioni del joystick sono girate, in INTERFERENCE a tratti vengono mescolate. Nella 1.0.2 tutti e
+  due si pilotavano come un livello normale, cioè mancava proprio la loro trovata;
+- la **musica** dell'Amiga ora suona alla velocità del C64: fino alla 1.0.2 andava circa il 20% più
+  lenta.
+
+Sul PC la stessa correzione a INTERFERENCE e THE SWITCH è nella versione 1.0.7.
+
 ## I limiti, detti subito
 
 Sull'Amiga serve almeno un 68020 con memoria Fast: su un A500 senza acceleratore non parte, e lo dice
