@@ -14,9 +14,110 @@ requisiti: >-
   Purist (A500): 512 KB chip + 512 KB. Fast: the same and a fast CPU. Remake: 1 MB chip (ECS
   Agnus) + 1 MB fast and a fast CPU (68030 or better, PiStorm); with WHDLoad 512 KB chip + 1.2 MB
   fast. Kickstart 1.3 or later, OCS / ECS / AGA.
-release_url: "https://github.com/korb3n70/forbidden-forest-amiga/releases/tag/v1.2.3"
-versione: "1.2.3"
-data_versione: 2026-10-26
+release_url: "https://github.com/korb3n70/forbidden-forest-amiga/releases/tag/v2.0"
+compat:
+  machines:
+    - id: "ocs_4mb"
+      name: "Amiga OCS/ECS, 4 MB"
+    - id: "ocs_8mb"
+      name: "Amiga OCS/ECS, 8 MB"
+    - id: "a1200_4mb"
+      name: "Amiga 1200, 4 MB, CPU di serie"
+    - id: "a1200_8mb"
+      name: "Amiga 1200, 8 MB, CPU di serie"
+    - id: "pistorm"
+      name: "Amiga con PiStorm"
+    - id: "thea500mini"
+      name: "THEA500 Mini"
+    - id: "thea1200"
+      name: "THEA1200"
+  editions:
+    - name: "ForbiddenForestFast"
+      cells:
+        - machine: "ocs_4mb"
+          status: "untested"
+          offer: "2.0"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "ocs_8mb"
+          status: "untested"
+          offer: "2.0"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "a1200_4mb"
+          status: "untested"
+          offer: "2.0"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "a1200_8mb"
+          status: "untested"
+          offer: "2.0"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "pistorm"
+          status: "untested"
+          offer: "2.0"
+          why: "prova a occhio passata su una macchina vera; manca la misura delle immagini al secondo su questa macchina"
+          note: "non provato su questa macchina"
+        - machine: "thea500mini"
+          status: "untested"
+          offer: "2.0"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "thea1200"
+          status: "untested"
+          offer: "2.0"
+          why: ""
+          note: "non provato su questa macchina"
+    - name: "ForbiddenForestRemake"
+      cells:
+        - machine: "ocs_4mb"
+          status: "untested"
+          offer: "2.0"
+          why: "richiede piu' di 512 KB di memoria chip (con 512 KB: no); con 1 MB di chip o piu' da misurare."
+          note: "non provato su questa macchina"
+        - machine: "ocs_8mb"
+          status: "untested"
+          offer: "2.0"
+          why: "come con 4 MB: piu' di 512 KB di chip richiesti, da misurare"
+          note: "non provato su questa macchina"
+        - machine: "a1200_4mb"
+          status: "no"
+          offer: "1.2.3"
+          why: "12-18 immagini al secondo contro le 25 del traguardo: l'edizione richiede un 68030 o superiore"
+        - machine: "a1200_8mb"
+          status: "no"
+          offer: "1.2.3"
+          why: "come con 4 MB: la memoria non cambia la CPU di serie (68EC020), 12-18 immagini al secondo contro 25"
+        - machine: "pistorm"
+          status: "untested"
+          offer: "2.0"
+          why: "prova a occhio su una macchina vera con un difetto aperto: una fascia sul bordo destro dell'immagine (difetto del display di reforge, in correzione sul ramo ff-fascia-destra); manca anche la misura delle immagini al secondo"
+          note: "non provato su questa macchina"
+        - machine: "thea500mini"
+          status: "untested"
+          offer: "2.0"
+          why: ""
+          note: "non provato su questa macchina"
+        - machine: "thea1200"
+          status: "untested"
+          offer: "2.0"
+          why: ""
+          note: "non provato su questa macchina"
+older_downloads:
+  - file: "ForbiddenForestRemake_v1.2.3.lha"
+    version: "1.2.3"
+    edition: "ForbiddenForestRemake"
+    bytes: 170371
+    machines: ["a1200_4mb", "a1200_8mb"]
+  - file: "ForbiddenForest_v1.2.3.lha"
+    version: "1.2.3"
+    edition: "ForbiddenForest"
+    bytes: 114545
+    machines: []
+    note: "edizione non rifatta da reforge: port 1.2.3 fatto a mano (repo forbidden-forest), non reforge"
+versione: "2.0"
+data_versione: 2026-11-20
 cartella: forbidden-forest
 repo: "korb3n70/forbidden-forest-amiga"
 schermate:
@@ -28,22 +129,116 @@ schermate:
   - file: /assets/img/giochi/forbidden-forest/forbidden_forest_amiga_remake_3_gameplay_spider.png
 download:
   - nome: "Purist edition for fast Amigas, WHDLoad pack"
-    file: "ForbiddenForestFast_v1.2.3.lha"
-    dimensione: "114 KB"
+    file: "ForbiddenForestFast_v2.0.lha"
+    dimensione: "261 KB"
     descrizione: "the original game with the sound mixed at 28 kHz; WHDLoad, or the DOS icon without WHDLoad"
   - nome: "Remake, WHDLoad pack"
-    file: "ForbiddenForestRemake_v1.2.3.lha"
-    dimensione: "166 KB"
+    file: "ForbiddenForestRemake_v2.0.lha"
+    dimensione: "710 KB"
     descrizione: "new graphics, a living sky, three planes of parallax; fast Amigas (68030 or better, PiStorm); WHDLoad, or the DOS icon without WHDLoad"
   - nome: "Floppies"
-    file: "ForbiddenForest_Amiga_ADF_v1.2.3_2026-10-26.zip"
-    dimensione: "453 KB"
-    descrizione: "one bootable ADF per edition, one disk with both fast editions and an installer (ForbiddenForest_FastAmigas.adf), the readme files"
-  - nome: "Purist edition (A500), WHDLoad pack"
-    file: "ForbiddenForest_v1.2.3.lha"
-    dimensione: "112 KB"
-    descrizione: "the original C64 graphics and gameplay, the SID voices on Paula; a stock A500 with 1 MB"
+    file: "ForbiddenForest_Amiga_ADF_v2.0_2026-11-20.zip"
+    dimensione: "354 KB"
+    descrizione: "one bootable ADF per edition (Fast and Remake), the readme files and INSTRUCTIONS.md"
 changelog:
+  - versione: "2.0"
+    data: 2026-11-20
+    note: |
+      One version for every platform: Amiga, Windows and, new, the Mac.
+
+      **Amiga: ForbiddenForestFast and ForbiddenForestRemake are now made with reforge.** The C64 game is translated
+      routine by routine into portable C and checked against the original running in a C64 emulator. Before, the Amiga had
+      a 68000 recompilation. The game plays as before, with the same sound as 1.2.3: the SID's voices from reSID recordings
+      and the «splat» when an arrow hits. The purist edition for a stock A500 stays the hand-made 1.2.3, still on this page.
+
+      **Fixed**
+
+      - **The game no longer stands still after you shoot the ghost.** The ghost now fades away and the game goes on. On the
+        PC, 1.3 could stop there for good.
+      - The stars twinkle in different places, as on the C64.
+      - **Amiga, not enough memory:** the game now says how much memory it is missing and goes back to the Shell. Before, it
+        could start anyway and hang. Under WHDLoad, a slave from another release next to the program now gives a message
+        instead of crashing.
+
+      **New**
+
+      - **Mac** (macOS 11 or later, Apple silicon and Intel): the same two editions as on Windows, C64 and Reforge.
+      - **The version on screen** on Windows and Mac for 5 seconds at the start, under the picture: the game's version, and
+        beside it in small print reforge's («REFORGE 2026.11»).
+      - **The C64's colours** on Windows and Mac as in VICE's Colodore palette, as on the Amiga.
+      - **The same commands on every platform**, with Alt (Option on a Mac):
+
+        | keys | what |
+        |---|---|
+        | Alt+P | pause |
+        | Alt+M | sound off / on |
+        | Alt+plus / minus | volume |
+        | Alt+J | swap the joystick ports |
+        | Alt+R | RESTORE |
+        | Alt+Q or Esc | quit |
+        | Alt+Return or F11 | full screen (PC and Mac) |
+
+        The volume and mute are remembered in `reforge.cfg`. Backspace is RUN/STOP (back to the title), and F1 / F3 / F5 /
+        F7 still choose the level on the title.
+      - **Two gamepads on the PC and Mac:** a pad unplugged and plugged back keeps its player. Before, the two players could
+        be swapped until the end of the game.
+      - **One program per edition on Windows and Mac:** the game's files are inside the program, with no data folder beside
+        it.
+      - **INSTRUCTIONS.md** in every package (Amiga, Windows, Mac): the controls on each platform, the reforge commands and
+        where the game saves its files.
+      - **Reforge edition / ForbiddenForestRemake:**
+        - the far trees are whole (their crowns were cut flat);
+        - in the intro the creature stays behind the trees while far and the dragon passes in front of them when near;
+        - the Demogorgon's head is a wider target, as in the Amiga 1.2.3;
+        - the dance between waves is shorter, as in 1.2.3;
+        - when the Demogorgon falls: a night with lightning, a short round of fireworks, then VICTORY.
+      - **ForbiddenForestRemake on the Amiga:**
+        - the monsters no longer blink in the heavy waves;
+        - the forest scrolls at an even pace (25 pictures a second on a 68030);
+        - no bar at the right edge of the picture on a PiStorm.
+
+      **Requirements and known limits**
+
+      - **Amiga:** ForbiddenForestFast needs a 68020 or better. **ForbiddenForestRemake needs a 68030 or better:** on an A1200
+        with its stock 68EC020 it runs at 12-18 pictures a second instead of 25 (for that machine, use 1.2.3). For a stock A500,
+        use the 1.2.3 edition.
+      - **Amiga memory,** the smallest machine of nine tried that starts and plays, with the game started straight from the
+        startup-sequence (the Workbench and other programs take memory of their own):
+
+        | edition | from AmigaDOS | from WHDLoad |
+        |---|---|---|
+        | ForbiddenForestFast | 1 MB chip RAM (an A500+ or an A600) and 1 MB fast RAM | the same |
+        | ForbiddenForestRemake | 1 MB chip RAM (an A500+ or an A600) and 2 MB fast RAM | the same |
+
+      - **AmiSync** users: AmiSync 0.4.0 or newer.
+      - **Windows and Mac:** not code-signed. Windows and macOS warn the first time.
+
+      **Quality assurance**
+
+      - **Automatic scenes:** every edition was driven automatically through the game's situations and compared with the
+        original running in a C64 emulator. The situations: the title and the start, the three starting levels, each
+        monster's wave, each monster's kill, the archer's death, the end of a wave and of a whole cycle, running out of
+        arrows, the night, RUN/STOP, walking and shooting. This ran on the PC/Mac program (on the Mac) and on an emulated
+        Amiga, in both editions.
+      - **Long games:** an automatic player played long games on the emulated Amiga, with an alarm for a game that stops
+        moving.
+      - **Same picture on Mac and Amiga:** another alarm compares the forest drawn on the Mac with the one drawn on the
+        Amiga.
+      - **The ghost freeze was found this way.** It is fixed in this version and checked on every build.
+      - **Amiga memory:** the requirement above was measured on nine Amiga machine configurations, from 512 KB chip RAM to
+        2 MB chip + 8 MB fast.
+      - **By hand:** the final test build was played on a real Amiga, an Amiga 2000 with a PiStorm.
+
+      **Files:**
+      - AmiSync puts all the Amiga editions in one drawer, `ForbiddenForest`. Its `README.txt` and `CHANGES.txt` stay those
+        of the 1.2.3 A500 edition; this version's texts are `README_Fast.txt`, `CHANGES_Fast.txt` and so on, plus
+        `INSTRUCTIONS.md`.
+      - Amiga: `ForbiddenForestFast_v2.0.lha`, `ForbiddenForestRemake_v2.0.lha`, and the bootable floppies in `ForbiddenForest_Amiga_ADF_v2.0_2026-11-20.zip`.
+      - Windows: `ForbiddenForest_PC_v2.0_win64.zip`.
+      - Mac: `ForbiddenForest_PC_v2.0_macos-universal.zip`.
+
+      The PC and Mac packages are the same ones the Reforge Arcade launcher installs:
+      https://www.bonomo.cloud/launcher/
   - versione: "1.2.3"
     data: 2026-10-26
     note: |
