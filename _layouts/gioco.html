@@ -86,6 +86,76 @@ layout: page
     {% if page.requisiti %}
       <p class="gioco-requisiti">{{ page.requisiti }}</p>
     {% endif %}
+
+    <!--
+      Le versioni precedenti ancora giuste per alcune macchine e la matrice
+      delle macchine: li scrive l'orchestrator in game.md (older_downloads,
+      compat; regola dell'utente del 15.11.2026: la pagina pubblica la matrice
+      e i giochi in matrice si scaricano). Diciture in inglese come il resto
+      della pagina; le note interne (in italiano) non si mostrano.
+    -->
+    {% if page.older_downloads and page.older_downloads.size > 0 %}
+      <h3 id="older-versions">Older versions, still the right ones for some machines</h3>
+      <div class="gioco-download">
+        {% for o in page.older_downloads %}
+          {% assign url = site.scarica.download_base | append: '/' | append: page.cartella | append: '/' | append: o.file %}
+          <div class="gioco-versione">
+            <div class="gioco-versione-testo">
+              <b>{{ o.file }}</b>
+              {% if o.bytes and o.bytes > 0 %}<span class="gioco-peso">{{ o.bytes | divided_by: 1024 }} KB</span>{% endif %}
+              <p>
+                Version {{ o.version }}
+                {%- if o.machines and o.machines.size > 0 -%}
+                  , for:
+                  {% for m in o.machines %}
+                    {%- assign mn = m -%}
+                    {%- for cm in page.compat.machines -%}{%- if cm.id == m -%}{%- assign mn = cm.name -%}{%- endif -%}{%- endfor -%}
+                    {{ mn | replace: 'CPU di serie', 'stock CPU' | replace: ' con ', ' with ' }}{% unless forloop.last %}; {% endunless %}
+                  {%- endfor -%}
+                {%- elsif o.edition == '' -%}
+                  : the floppies (ADF)
+                {%- else -%}
+                  : the edition for a stock A500, not rebuilt
+                {%- endif -%}.
+              </p>
+            </div>
+            <a class="btn btn-outline-primary" href="{{ url }}" rel="noopener" data-statsrv-ignore>
+              <i class="fas fa-download"></i> Download
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if page.compat and page.compat.editions and page.compat.editions.size > 0 %}
+      <h3 id="machines">Which Amiga runs which edition</h3>
+      <div class="gioco-matrice">
+        <table>
+          <thead>
+            <tr>
+              <th>Edition</th>
+              {% for m in page.compat.machines %}<th>{{ m.name | replace: 'CPU di serie', 'stock CPU' | replace: ' con ', ' with ' }}</th>{% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for e in page.compat.editions %}
+              <tr>
+                <th>{{ e.name }}</th>
+                {% for c in e.cells %}
+                  {% if c.status == 'yes' %}
+                    <td class="si">yes</td>
+                  {% elsif c.status == 'no' %}
+                    <td class="no">no{% if c.offer != '' %}<br><small>use {{ c.offer }}</small>{% endif %}</td>
+                  {% else %}
+                    <td class="np">not tested yet</td>
+                  {% endif %}
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
   {% else %}
     <p class="text-muted">The first public release is on its way.</p>
   {% endif %}

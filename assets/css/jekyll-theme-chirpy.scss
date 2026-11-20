@@ -294,6 +294,38 @@
   font-size: 0.85rem;
 }
 
+/* Matrice delle macchine (older_downloads e compat di game.md) */
+.gioco-matrice {
+  overflow-x: auto;
+  margin: 0.8rem 0 1.5rem;
+}
+
+.gioco-matrice table {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.gioco-matrice th,
+.gioco-matrice td {
+  border: 1px solid var(--main-border-color);
+  padding: 0.35rem 0.5rem;
+  text-align: center;
+  vertical-align: top;
+}
+
+.gioco-matrice tbody th {
+  text-align: left;
+}
+
+.gioco-matrice td.si {
+  font-weight: 600;
+}
+
+.gioco-matrice td.no,
+.gioco-matrice td.np {
+  color: var(--text-muted-color);
+}
+
 /* Donazioni */
 .gioco-dona {
   margin: 2rem 0;
