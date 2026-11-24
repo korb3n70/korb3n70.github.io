@@ -14,7 +14,7 @@ requisiti: >-
   Purist (A500): 512 KB chip + 512 KB. Fast: the same and a fast CPU. Remake: 1 MB chip (ECS
   Agnus) + 1 MB fast and a fast CPU (68030 or better, PiStorm); with WHDLoad 512 KB chip + 1.2 MB
   fast. Kickstart 1.3 or later, OCS / ECS / AGA.
-release_url: "https://github.com/korb3n70/forbidden-forest-amiga/releases/tag/v2.0"
+release_url: "https://github.com/korb3n70/forbidden-forest-amiga/releases/tag/v2.0.1"
 compat:
   machines:
     - id: "ocs_4mb"
@@ -36,49 +36,49 @@ compat:
       cells:
         - machine: "ocs_4mb"
           status: "untested"
-          offer: "2.0"
+          offer: "2.0.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "ocs_8mb"
           status: "untested"
-          offer: "2.0"
+          offer: "2.0.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "a1200_4mb"
           status: "untested"
-          offer: "2.0"
+          offer: "2.0.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "a1200_8mb"
           status: "untested"
-          offer: "2.0"
+          offer: "2.0.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "pistorm"
           status: "untested"
-          offer: "2.0"
+          offer: "2.0.1"
           why: "prova a occhio passata su una macchina vera; manca la misura delle immagini al secondo su questa macchina"
           note: "non provato su questa macchina"
         - machine: "thea500mini"
           status: "untested"
-          offer: "2.0"
+          offer: "2.0.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "thea1200"
           status: "untested"
-          offer: "2.0"
+          offer: "2.0.1"
           why: ""
           note: "non provato su questa macchina"
     - name: "ForbiddenForestRemake"
       cells:
         - machine: "ocs_4mb"
           status: "untested"
-          offer: "2.0"
+          offer: "2.0.1"
           why: "richiede piu' di 512 KB di memoria chip (con 512 KB: no); con 1 MB di chip o piu' da misurare."
           note: "non provato su questa macchina"
         - machine: "ocs_8mb"
           status: "untested"
-          offer: "2.0"
+          offer: "2.0.1"
           why: "come con 4 MB: piu' di 512 KB di chip richiesti, da misurare"
           note: "non provato su questa macchina"
         - machine: "a1200_4mb"
@@ -91,17 +91,17 @@ compat:
           why: "come con 4 MB: la memoria non cambia la CPU di serie (68EC020), 12-18 immagini al secondo contro 25"
         - machine: "pistorm"
           status: "untested"
-          offer: "2.0"
+          offer: "2.0.1"
           why: "prova a occhio su una macchina vera con un difetto aperto: una fascia sul bordo destro dell'immagine (difetto del display di reforge, in correzione sul ramo ff-fascia-destra); manca anche la misura delle immagini al secondo"
           note: "non provato su questa macchina"
         - machine: "thea500mini"
           status: "untested"
-          offer: "2.0"
+          offer: "2.0.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "thea1200"
           status: "untested"
-          offer: "2.0"
+          offer: "2.0.1"
           why: ""
           note: "non provato su questa macchina"
 older_downloads:
@@ -122,8 +122,8 @@ older_downloads:
     bytes: 464102
     machines: []
     note: "i dischetti della 1.2.3"
-versione: "2.0"
-data_versione: 2026-11-20
+versione: "2.0.1"
+data_versione: 2026-11-24
 cartella: forbidden-forest
 repo: "korb3n70/forbidden-forest-amiga"
 schermate:
@@ -135,18 +135,25 @@ schermate:
   - file: /assets/img/giochi/forbidden-forest/forbidden_forest_amiga_remake_3_gameplay_spider.png
 download:
   - nome: "Purist edition for fast Amigas, WHDLoad pack"
-    file: "ForbiddenForestFast_v2.0.lha"
-    dimensione: "261 KB"
+    file: "ForbiddenForestFast_v2.0.1.lha"
+    dimensione: "262 KB"
     descrizione: "the original game with the sound mixed at 28 kHz; WHDLoad, or the DOS icon without WHDLoad"
   - nome: "Remake, WHDLoad pack"
-    file: "ForbiddenForestRemake_v2.0.lha"
-    dimensione: "710 KB"
+    file: "ForbiddenForestRemake_v2.0.1.lha"
+    dimensione: "711 KB"
     descrizione: "new graphics, a living sky, three planes of parallax; fast Amigas (68030 or better, PiStorm); WHDLoad, or the DOS icon without WHDLoad"
   - nome: "Floppies"
-    file: "ForbiddenForest_Amiga_ADF_v2.0_2026-11-20.zip"
+    file: "ForbiddenForest_Amiga_ADF_v2.0.1_2026-11-24.zip"
     dimensione: "354 KB"
     descrizione: "one bootable ADF per edition (Fast and Remake), the readme files and INSTRUCTIONS.md"
 changelog:
+  - versione: "2.0.1"
+    data: 2026-11-24
+    note: |
+      - **PC and Mac: the controls answer sooner.** The joystick and the keys are read just before each frame, about 18 ms fresher.
+      - **Amiga:** the same game, a new version number.
+
+      PC and Mac through the Reforge Arcade launcher: [korn3n70.itch.io/reforge](https://korn3n70.itch.io/reforge) and www.bonomo.cloud/launcher.
   - versione: "2.0"
     data: 2026-11-20
     note: |
