@@ -14,7 +14,7 @@ requisiti: >-
   Amiga: a 68020 or better, 512 KB chip + 2 MB fast (SpaceTaxiFast from AmigaDOS: 1 MB),
   Kickstart 1.3 or later (WHDLoad: 2.0). PC: Windows 10 or 11, 64-bit, through the Reforge
   Arcade launcher.
-release_url: "https://github.com/korb3n70/spacetaxi/releases/tag/v1.1"
+release_url: "https://github.com/korb3n70/spacetaxi/releases/tag/v1.1.1"
 compat:
   machines:
     - id: "ocs_4mb"
@@ -36,79 +36,79 @@ compat:
       cells:
         - machine: "ocs_4mb"
           status: "untested"
-          offer: "1.1"
+          offer: "1.1.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "ocs_8mb"
           status: "untested"
-          offer: "1.1"
+          offer: "1.1.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "a1200_4mb"
           status: "untested"
-          offer: "1.1"
+          offer: "1.1.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "a1200_8mb"
           status: "untested"
-          offer: "1.1"
+          offer: "1.1.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "pistorm"
           status: "untested"
-          offer: "1.1"
+          offer: "1.1.1"
           why: "prova a occhio su una macchina vera con difetti: l'immagine ferma all'uscita dall'intermezzo (corretta nella 1.0.4t2) e un difetto audio ancora aperto; manca la misura delle immagini al secondo"
           note: "non provato su questa macchina"
         - machine: "thea500mini"
           status: "untested"
-          offer: "1.1"
+          offer: "1.1.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "thea1200"
           status: "untested"
-          offer: "1.1"
+          offer: "1.1.1"
           why: ""
           note: "non provato su questa macchina"
     - name: "SpaceTaxiRemake"
       cells:
         - machine: "ocs_4mb"
           status: "untested"
-          offer: "1.1"
+          offer: "1.1.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "ocs_8mb"
           status: "untested"
-          offer: "1.1"
+          offer: "1.1.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "a1200_4mb"
           status: "untested"
-          offer: "1.1"
+          offer: "1.1.1"
           why: "misurato, ma manca la prova a occhio su questa macchina"
           note: "non provato su questa macchina"
         - machine: "a1200_8mb"
           status: "untested"
-          offer: "1.1"
+          offer: "1.1.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "pistorm"
           status: "untested"
-          offer: "1.1"
+          offer: "1.1.1"
           why: "prova a occhio su una macchina vera con difetti: l'immagine ferma all'uscita dall'intermezzo (corretta nella 1.0.4t2) e un difetto audio ancora aperto; manca la misura delle immagini al secondo"
           note: "non provato su questa macchina"
         - machine: "thea500mini"
           status: "untested"
-          offer: "1.1"
+          offer: "1.1.1"
           why: ""
           note: "non provato su questa macchina"
         - machine: "thea1200"
           status: "untested"
-          offer: "1.1"
+          offer: "1.1.1"
           why: ""
           note: "non provato su questa macchina"
 older_downloads:
-versione: "1.1"
-data_versione: 2026-11-20
+versione: "1.1.1"
+data_versione: 2026-11-24
 cartella: space-taxi
 repo: "korb3n70/spacetaxi"
 schermate:
@@ -122,18 +122,25 @@ schermate:
   - file: /assets/img/giochi/space-taxi/space_taxi_8_black_hole.png
 download:
   - nome: "Amiga: the original edition, WHDLoad pack"
-    file: "SpaceTaxiFast_v1.1.lha"
-    dimensione: "503 KB"
+    file: "SpaceTaxiFast_v1.1.1.lha"
+    dimensione: "504 KB"
     descrizione: "the original graphics, the music as Paula streams, the C64's own sampled voices; WHDLoad, or the DOS icon without WHDLoad"
   - nome: "Amiga: Reforge edition, WHDLoad pack"
-    file: "SpaceTaxiRemake_v1.1.lha"
+    file: "SpaceTaxiRemake_v1.1.1.lha"
     dimensione: "814 KB"
     descrizione: "the same game with new voices (whole phrases at 28 kHz) and a title menu; WHDLoad, or the DOS icon without WHDLoad"
   - nome: "Amiga: floppies"
-    file: "SpaceTaxi_Amiga_ADF_v1.1_2026-11-20.zip"
-    dimensione: "925 KB"
+    file: "SpaceTaxi_Amiga_ADF_v1.1.1_2026-11-24.zip"
+    dimensione: "926 KB"
     descrizione: "one bootable ADF per edition, the readme files"
 changelog:
+  - versione: "1.1.1"
+    data: 2026-11-24
+    note: |
+      - **PC and Mac: the controls answer sooner.** The joystick and the keys are read just before each frame, about 18 ms fresher.
+      - **Amiga:** the same game, a new version number.
+
+      PC and Mac through the Reforge Arcade launcher: [korn3n70.itch.io/reforge](https://korn3n70.itch.io/reforge) and www.bonomo.cloud/launcher.
   - versione: "1.1"
     data: 2026-11-20
     note: |
@@ -262,21 +269,6 @@ changelog:
       - **SpaceTaxiFast_v1.0.lha**: the C64 game as it was, for fast Amigas (hard disk or WHDLoad).
       - **SpaceTaxiRemake_v1.0.lha**: the remake, with the voices at 28 kHz.
       - **SpaceTaxi_Amiga_ADF_v1.0_2026-11-04.zip**: both editions on bootable floppies (ADF).
-
-      The changes are in CHANGES.txt (in Italian, NOVITA.txt).
-  - versione: "1.0.1"
-    data: 2026-11-06
-    note: |
-      Space Taxi 1.0.1 for the Amiga (2026-11-06).
-
-      - The level's sprites no longer always crash the taxi: in TELEPORTS the teleports carry it, in PUZZLER the switches work, in REBOUND the balls bounce it off, as on the C64; in BLACK HOLE and MAGNETS the crash is the C64's (no fall first).
-      - The version shows on screen for 5 seconds at the start.
-
-      Files:
-      - **SpaceTaxiFast_v1.0.1.lha**: the C64 game as it was, for fast Amigas (hard disk or WHDLoad).
-      - **SpaceTaxiRemake_v1.0.1.lha**: the remake, with the voices at 28 kHz.
-      - **SpaceTaxi_Amiga_ADF_v1.0.1_2026-11-06.zip**: both editions on bootable floppies (ADF).
-      - **SpaceTaxi_PC_v1.0.4_win64.zip**: the PC edition 1.0.4 with the same fix (also through the Reforge Arcade launcher).
 
       The changes are in CHANGES.txt (in Italian, NOVITA.txt).
 ---
